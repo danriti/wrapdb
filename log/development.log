@@ -1028,3 +1028,15 @@ Processing by UsersController#create as HTML
   [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sat, 17 Nov 2012 21:06:03 UTC +00:00], ["image", nil], ["name", "ashish"], ["provider", nil], ["uid", nil], ["updated_at", Sat, 17 Nov 2012 21:06:03 UTC +00:00]]
   [1m[36m (24.3ms)[0m  [1mcommit transaction[0m
 Completed 200 OK in 47ms (Views: 0.4ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/projects/create?name=Krapp&userid=3" for 127.0.0.1 at 2012-11-17 16:12:14 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"name"=>"Krapp", "userid"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (7.6ms)[0m  [1mINSERT INTO "projects" ("created_at", "name", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 17 Nov 2012 21:12:15 UTC +00:00], ["name", "Krapp"], ["updated_at", Sat, 17 Nov 2012 21:12:15 UTC +00:00], ["user_id", 3]]
+  [1m[35m (57.7ms)[0m  commit transaction
+Completed 200 OK in 238ms (Views: 1.0ms | ActiveRecord: 69.6ms)
+Connecting to database specified by database.yml
