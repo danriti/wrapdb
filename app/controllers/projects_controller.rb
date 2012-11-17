@@ -15,6 +15,20 @@ class ProjectsController < ApplicationController
 
   end 
 
+  # /projects/get
+  def get
+    project = Project.where(:id => params[:id]).first
+
+    if project != nil
+      render :json => { 'project' => project, 
+                        'endpoints' => project.endpoints,
+                        'status' => 'success' }, 
+             :callback => params[:callback]
+    else
+      render :json => { 'status' => 'fail' }, :callback => params[:callback]
+    end
+  end
+
 #  # GET /projects
 #  # GET /projects.json
 #  def index

@@ -1127,3 +1127,12 @@ Processing by UsersController#get as HTML
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'ashish' LIMIT 1[0m
   [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."user_id" = 3
 Completed 200 OK in 184ms (Views: 35.0ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/projects/get?id=2" for 127.0.0.1 at 2012-11-17 16:28:42 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#get as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 2 LIMIT 1[0m
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."project_id" = 2
+Completed 200 OK in 166ms (Views: 46.3ms | ActiveRecord: 4.3ms)

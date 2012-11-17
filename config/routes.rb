@@ -7,6 +7,7 @@ EasyApi::Application.routes.draw do
   match 'users/get', to: 'users#get'
 
   match 'projects/create', to: 'projects#create'
+  match 'projects/get', to: 'projects#get'
 
   # omniauth-github related routes.
   #match 'auth/:provider/callback', to: 'sessions#create'
