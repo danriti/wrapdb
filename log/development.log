@@ -651,3 +651,28 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+Migrating to CreateProjects (20121117195012)
+Migrating to CreateEndpoints (20121117195017)
+Migrating to CreateDictionaries (20121117195021)
+Migrating to CreateErrays (20121117195025)
+Migrating to CreateItems (20121117195030)
+Migrating to CreateTuples (20121117195034)
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("dictionaries")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("endpoints")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_dictionary_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_project_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("errays")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_projects_on_user_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_item_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_dictionary_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
