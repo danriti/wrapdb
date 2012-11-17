@@ -1,0 +1,545 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (20.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (8.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateProjects (20121117182803)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117182803')
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("projects")
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-11-17 13:44:01 -0500
+Connecting to database specified by database.yml
+Served asset /rails.png - 304 Not Modified (7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:44:15 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  Rendered projects/index.html.erb within layouts/application (30.1ms)
+Compiled projects.css  (10ms)  (pid 23237)
+Compiled scaffolds.css  (22ms)  (pid 23237)
+Compiled sessions.css  (1ms)  (pid 23237)
+Compiled application.css  (64ms)  (pid 23237)
+Compiled jquery.js  (9ms)  (pid 23237)
+Compiled jquery_ujs.js  (0ms)  (pid 23237)
+Compiled projects.js  (176ms)  (pid 23237)
+Compiled sessions.js  (148ms)  (pid 23237)
+Compiled application.js  (408ms)  (pid 23237)
+Completed 200 OK in 801ms (Views: 718.1ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /projects.css - 200 OK (2ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /projects.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /sessions.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:44:17 -0500
+Served asset /application.js - 304 Not Modified (16ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateProjects (20121117182803)
+Migrating to CreateUsers (20121117184556)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "name" varchar(255), "image" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117184556')[0m
+  [1m[35m (65.7ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("projects")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:49:33 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  Rendered projects/index.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 167ms (Views: 84.3ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /projects.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /projects.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:34 -0500
+Served asset /sessions.js - 304 Not Modified (2ms)
+
+
+Started GET "/auth/github" for 127.0.0.1 at 2012-11-17 13:49:37 -0500
+
+
+Started GET "/auth/github/callback?code=fa04f9dd41168b323f52&state=ca3412bd89756ef89ba5d2fbd263c935c2da9b173bc799c7" for 127.0.0.1 at 2012-11-17 13:49:37 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"fa04f9dd41168b323f52", "state"=>"ca3412bd89756ef89ba5d2fbd263c935c2da9b173bc799c7", "provider"=>"github"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'github' AND "users"."uid" = '606001' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.5ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sat, 17 Nov 2012 18:49:38 UTC +00:00], ["image", "https://secure.gravatar.com/avatar/1f0e10cc9e14ada9536aa47b4b565f71?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"], ["name", "Dan Riti"], ["provider", "github"], ["uid", "606001"], ["updated_at", Sat, 17 Nov 2012 18:49:38 UTC +00:00]]
+  [1m[36m (22.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 104ms (ActiveRecord: 30.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects" 
+  Rendered projects/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /projects.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:38 -0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2012-11-17 13:49:58 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:49:58 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" 
+  Rendered projects/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /application.css - 304 Not Modified (21ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /projects.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:49:59 -0500
+Served asset /application.js - 304 Not Modified (33ms)
+
+
+Started GET "/auth/github" for 127.0.0.1 at 2012-11-17 13:50:00 -0500
+
+
+Started GET "/auth/github/callback?code=d7e96a754e4b68dd7856&state=9f77c1bfc8175ff14aa6783853d743e44df5a5a34e796e88" for 127.0.0.1 at 2012-11-17 13:50:00 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"d7e96a754e4b68dd7856", "state"=>"9f77c1bfc8175ff14aa6783853d743e44df5a5a34e796e88", "provider"=>"github"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'github' AND "users"."uid" = '606001' LIMIT 1[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects" 
+  Rendered projects/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /application.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /projects.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:01 -0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects" 
+  Rendered projects/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 27ms (Views: 24.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /projects.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:50:04 -0500
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 13:52:11 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  Rendered projects/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 168ms (Views: 83.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /projects.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /application.js - 304 Not Modified (29ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /sessions.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 13:52:12 -0500
+Served asset /projects.js - 304 Not Modified (2ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateProjects (20121117182803)
+Migrating to CreateUsers (20121117184556)
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 14:02:41 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  Rendered projects/index.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 171ms (Views: 85.7ms | ActiveRecord: 28.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /projects.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /projects.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /sessions.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:42 -0500
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/auth/github" for 127.0.0.1 at 2012-11-17 14:02:43 -0500
+
+
+Started GET "/auth/github/callback?code=1c162ba891dbe2ceef20&state=94982f886298fa73e4ce93d7515753eae1c02ab99fa831af" for 127.0.0.1 at 2012-11-17 14:02:43 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"1c162ba891dbe2ceef20", "state"=>"94982f886298fa73e4ce93d7515753eae1c02ab99fa831af", "provider"=>"github"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'github' AND "users"."uid" = '606001' LIMIT 1
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 90ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  Rendered projects/index.html.erb within layouts/application (0.5ms)
+  [1m[35mUser Load (6.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 22ms (Views: 14.5ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /projects.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:44 -0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2012-11-17 14:02:45 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 14:02:45 -0500
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  Rendered projects/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
+Served asset /projects.js - 304 Not Modified (2ms)
