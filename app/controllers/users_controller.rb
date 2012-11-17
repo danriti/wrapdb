@@ -10,4 +10,18 @@ class UsersController < ApplicationController
     end
   end
 
+  # /users/get
+  def get
+    user = User.where(:name => params[:name]).first
+
+    if user != nil
+      render :json => { 'user' => user, 
+                        'projects' => user.projects,
+                        'status' => 'success' }, 
+             :callback => params[:callback]
+    else
+      render :json => { 'status' => 'fail' }, :callback => params[:callback]
+    end
+  end
+
 end

@@ -4,6 +4,7 @@ EasyApi::Application.routes.draw do
   root to: 'projects#index'
 
   match 'users/create', to: 'users#create'
+  match 'users/get', to: 'users#get'
 
   match 'projects/create', to: 'projects#create'
 
