@@ -543,3 +543,111 @@ Served asset /application.js - 304 Not Modified (2ms)
 
 Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2012-11-17 14:02:46 -0500
 Served asset /projects.js - 304 Not Modified (2ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (77.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (12.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "name" varchar(255), "image" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195008')
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProjects (20121117195012)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195012')
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEndpoints (20121117195017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "endpoints" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "project_id" integer, "dictionary_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_endpoints_on_project_id" ON "endpoints" ("project_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_project_id')[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_endpoints_on_dictionary_id" ON "endpoints" ("dictionary_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195017')[0m
+  [1m[35m (16.2ms)[0m  commit transaction
+Migrating to CreateDictionaries (20121117195021)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "dictionaries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195021')[0m
+  [1m[35m (8.6ms)[0m  commit transaction
+Migrating to CreateErrays (20121117195025)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "errays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195025')[0m
+  [1m[35m (11.0ms)[0m  commit transaction
+Migrating to CreateItems (20121117195030)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "keytype" varchar(255), "value" varchar(255), "dictionary_id" integer, "erray_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_items_on_dictionary_id" ON "items" ("dictionary_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_dictionary_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_items_on_erray_id" ON "items" ("erray_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195030')
+  [1m[36m (15.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTuples (20121117195034)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tuples" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(255), "dictionary_id" integer, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_dictionary_id" ON "tuples" ("dictionary_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_tuples_on_item_id" ON "tuples" ("item_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195034')[0m
+  [1m[35m (10.7ms)[0m  commit transaction
+  [1m[36m (0.7ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("dictionaries")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("errays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_erray_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_dictionary_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("projects")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_projects_on_user_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("tuples")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

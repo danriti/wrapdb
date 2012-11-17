@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  user: 
+  project: 
+  dictionary: 
 
 two:
   name: MyString
-  user: 
+  project: 
+  dictionary: 

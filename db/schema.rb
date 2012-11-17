@@ -11,13 +11,61 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117184556) do
+ActiveRecord::Schema.define(:version => 20121117195034) do
 
-  create_table "projects", :force => true do |t|
-    t.string   "name"
+  create_table "dictionaries", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "endpoints", :force => true do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.integer  "dictionary_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "endpoints", ["dictionary_id"], :name => "index_endpoints_on_dictionary_id"
+  add_index "endpoints", ["project_id"], :name => "index_endpoints_on_project_id"
+
+  create_table "errays", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.string   "keytype"
+    t.string   "value"
+    t.integer  "dictionary_id"
+    t.integer  "erray_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "items", ["dictionary_id"], :name => "index_items_on_dictionary_id"
+  add_index "items", ["erray_id"], :name => "index_items_on_erray_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+
+  create_table "tuples", :force => true do |t|
+    t.string   "key"
+    t.integer  "dictionary_id"
+    t.integer  "item_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "tuples", ["dictionary_id"], :name => "index_tuples_on_dictionary_id"
+  add_index "tuples", ["item_id"], :name => "index_tuples_on_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"

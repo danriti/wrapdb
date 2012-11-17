@@ -2,8 +2,14 @@
 
 one:
   name: MyString
-  user: 
+  keytype: MyString
+  value: MyString
+  dictionary: 
+  erray: 
 
 two:
   name: MyString
-  user: 
+  keytype: MyString
+  value: MyString
+  dictionary: 
+  erray: 
