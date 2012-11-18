@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118001201) do
+ActiveRecord::Schema.define(:version => 20121118040853) do
 
   create_table "dictionaries", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(:version => 20121118001201) do
     t.integer  "dictionary_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "item_id"
   end
 
   add_index "endpoints", ["dictionary_id"], :name => "index_endpoints_on_dictionary_id"
+  add_index "endpoints", ["item_id"], :name => "index_endpoints_on_item_id"
   add_index "endpoints", ["project_id"], :name => "index_endpoints_on_project_id"
 
   create_table "errays", :force => true do |t|
