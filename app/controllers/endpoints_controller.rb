@@ -28,14 +28,42 @@ class EndpointsController < ApplicationController
     nil
   end
 
-  def create_instance_dictionary
-    nil
+  def create_instance_dictionary(item, blueprint, dictionary, data)
+    blueprint.dictionary.tuples.each do |t|
+      key = t.key
+      keytype = t.item.keytype
+      value = data[key]
+
+      tuple = Tuple.new(:key => key)
+      tuple.dictionary = dictionary
+
+      if keytype == 'string'
+        new_item = create_item(value, 'string')
+        tuple.item = new_item
+        tuple.save
+      elsif keytype == 'dictionary'
+        d = Dictionary.create!
+
+        new_item = create_item(nil, 'dictionary')
+        new_item.dictionary = d
+        new_item.save
+        tuple.item = new_item
+        tuple.save
+
+        create_instance_dictionary(new_item, t.item, d, data[key])
+      end
+    end
   end
 
   # /endpoints/instance/create
   def create_instance
     #endpoint = Endpoint.where(:id => params[:endpointid]).first
     blueprint = Item.where(:name => params[:blueprintname]).first
+
+    data = JSON.parse(params[:data])
+
+    puts 'HASH HERE!'
+    puts data
 
     d = Dictionary.create!
     #create_dictionary(item, blob)
@@ -47,28 +75,7 @@ class EndpointsController < ApplicationController
     item.save
 
     if blueprint != nil
-      blueprint.dictionary.tuples.each do |t|
-        data = JSON.parse(params[:data])
-        key = t.key
-        keytype = t.item.keytype
-        value = data[key]
-
-        if keytype == 'string'
-          tuple = Tuple.new(:key => key)
-          tuple.dictionary = d
-
-          new_item = create_item(value, 'string')
-          tuple.item = new_item
-          tuple.save
-        elsif keytype == 'dictionary'
-          new_item = create_item(nil, 'dictionary')
-          tuple.item = new_item
-          tuple.save
-
-          create_instance(new_item, i) 
-
-        end
-      end
+      create_instance_dictionary(item, blueprint, d, data)
 
       render :json => { 'id' => item.id, 'status' => 'success' }, :callback => params[:callback]
     else
