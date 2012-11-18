@@ -105,7 +105,7 @@ class EndpointsController < ApplicationController
     if blueprint != nil
       create_instance_dictionary(item, blueprint, d, data)
 
-      render :json => { 'id' => blueprint.id, 'status' => 'success' }, :callback => params[:callback]
+      render :json => { 'id' => item.id, 'status' => 'success' }, :callback => params[:callback]
     else
       render :json => { 'status' => 'fail' }, :callback => params[:callback]
     end
