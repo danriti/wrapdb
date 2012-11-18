@@ -2293,3 +2293,43 @@ Connecting to database specified by database.yml
   [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 17[0m
   [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 50 LIMIT 1
   [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 51 LIMIT 1[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 19:46:39 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (40.3ms)
+Completed 500 Internal Server Error in 81ms
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    8:     <th></th>
+    9:   </tr>
+    10: 
+    11: <% @projects.each do |project| %>
+    12:   <tr>
+    13:     <td><%= project.name %></td>
+    14:     <td><%= link_to 'Show', project %></td>
+  app/views/projects/index.html.erb:11:in `_app_views_projects_index_html_erb__917958293_87954140'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 19:49:18 -0500
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 3ms
+
+ActionView::MissingTemplate (Missing template projects/Hello World, application/Hello World with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/home/dan/dev/easy-api/app/views"
+):
+  app/controllers/projects_controller.rb:33:in `index'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-17 19:50:02 -0500
+Processing by ProjectsController#index as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
