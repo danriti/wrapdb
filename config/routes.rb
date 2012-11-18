@@ -10,6 +10,7 @@ EasyApi::Application.routes.draw do
   match 'projects/get', to: 'projects#get'
 
   match 'endpoints/create', to: 'endpoints#create'
+  match 'endpoints/get', to: 'endpoints#get_endpoints'
   match 'endpoints/render', to: 'endpoints#get_render'
   match 'endpoints/adapter', to: 'endpoints#get_adapter'
 

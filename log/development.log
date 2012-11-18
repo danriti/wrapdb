@@ -7397,3 +7397,22 @@ Processing by EndpointsController#get_render as HTML
   [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 43 LIMIT 1
   [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 44 LIMIT 1[0m
 Completed 200 OK in 72ms (Views: 1.4ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/endpoints/get" for 127.0.0.1 at 2012-11-18 05:00:22 -0500
+Connecting to database specified by database.yml
+Processing by EndpointsController#get_endpoints as HTML
+  [1m[36mEndpoint Load (0.3ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" INNER JOIN "items" ON "items"."id" = "endpoints"."item_id" WHERE "items"."keytype" = 'blueprint'[0m
+Completed 200 OK in 161ms (Views: 68.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/endpoints/get" for 127.0.0.1 at 2012-11-18 05:01:04 -0500
+Processing by EndpointsController#get_endpoints as HTML
+  [1m[35mEndpoint Load (0.3ms)[0m  SELECT "endpoints".* FROM "endpoints" INNER JOIN "items" ON "items"."id" = "endpoints"."item_id" WHERE "items"."keytype" = 'blueprint'
+Completed 200 OK in 26ms (Views: 23.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/endpoints/get" for 127.0.0.1 at 2012-11-18 05:01:30 -0500
+Processing by EndpointsController#get_endpoints as HTML
+  [1m[36mEndpoint Load (0.8ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" INNER JOIN "items" ON "items"."id" = "endpoints"."item_id" WHERE "items"."keytype" = 'blueprint'[0m
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.8ms)

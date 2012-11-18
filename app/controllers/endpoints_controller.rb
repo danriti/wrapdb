@@ -28,6 +28,13 @@ class EndpointsController < ApplicationController
     nil
   end
 
+  # /endpoints/get
+  def get_endpoints
+    array = Endpoint.joins(:item).where(:items => { :keytype => 'blueprint' })
+
+    render :json => array, :callback => params[:callback]
+  end
+
   def create_instance_dictionary(item, blueprint, dictionary, data)
     blueprint.dictionary.tuples.each do |t|
       key = t.key
