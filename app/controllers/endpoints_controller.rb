@@ -24,12 +24,69 @@ class EndpointsController < ApplicationController
   end
 
   # /endpoints/render
+  def get_adapter
+    nil
+  end
+
+  def create_instance_dictionary
+    nil
+  end
+
+  # /endpoints/instance/create
+  def create_instance
+    #endpoint = Endpoint.where(:id => params[:endpointid]).first
+    blueprint = Item.where(:name => params[:blueprintname]).first
+
+    d = Dictionary.create!
+    #create_dictionary(item, blob)
+
+    item = Item.new(:name => nil,
+                    :keytype => 'instance')
+    item.blueprint = blueprint
+    item.dictionary = d
+    item.save
+
+    if blueprint != nil
+      blueprint.dictionary.tuples.each do |t|
+        data = JSON.parse(params[:data])
+        key = t.key
+        keytype = t.item.keytype
+        value = data[key]
+
+        if keytype == 'string'
+          tuple = Tuple.new(:key => key)
+          tuple.dictionary = d
+
+          new_item = create_item(value, 'string')
+          tuple.item = new_item
+          tuple.save
+        elsif keytype == 'dictionary'
+          new_item = create_item(nil, 'dictionary')
+          tuple.item = new_item
+          tuple.save
+
+          create_instance(new_item, i) 
+
+        end
+      end
+
+      render :json => { 'id' => item.id, 'status' => 'success' }, :callback => params[:callback]
+    else
+      render :json => { 'status' => 'fail' }, :callback => params[:callback]
+    end
+  end
+
+  # /endpoints/instance/get
+  def create_get
+    nil
+  end
+
+  # /endpoints/render
   def get_render
     endpoint = Endpoint.where(:id => params[:id]).first
     
     if endpoint != nil
       h = Hash.new
-      #h = second_function(endpoint.item.dictionary, h)
       h = construct_dictionary(endpoint.item, h)
 
       render :json => h
@@ -45,7 +102,6 @@ class EndpointsController < ApplicationController
     blob = JSON.parse(params[:blob])
 
     d = Dictionary.create!
-    first_function(blob, d)
 
     render :json => blob
   end
@@ -142,59 +198,15 @@ private
         tuple.save
 
         create_array(new_item, i)
-      end
-    end
-
-
-  end
-
-  # Do something cool.
-  def first_function(blob, dictionary)
-    # Create top level item.
-    #i = Item.new(:name => blob['key'],
-    #             :keytype => blob['type'].downcase)
-    #i.dictionary = dictionary
-    #i.save
-
-    blob['value'].each do |i|
-      type = i['type']
-      key = i['key']
-      value = i['value']
-
-      # Tuple
-      if type == 'tuple'
-        puts 'Type: ' + type + ' => { ' + key + ' : ' + value + ' }'
-
-        item = Item.create!(:value => value,
-                            :keytype => 'string')
   
-        tuple = Tuple.new(:key => key)
-        tuple.dictionary = dictionary
-        tuple.item = item
+      # Blueprint
+      elsif type == 'blueprint'
+        puts 'Type: ' + type
+
+        new_item = create_item(nil, 'blueprint')
+        tuple.item = new_item
         tuple.save
 
-      # Dictionary
-      elsif type == 'dictionary'
-        puts 'Type: ' + type
-        
-        d = Dictionary.create!
-
-        item = Item.new(:value => nil,
-                        :keytype => 'dictionary')
-        item.dictionary = d
-        item.save
-  
-        tuple = Tuple.new(:key => key)
-        tuple.dictionary = dictionary
-        tuple.item = item
-        tuple.save
-
-        # Get recursive and digest the dictionary.
-        first_function(i, d)
-
-      # Array
-      elsif type == 'array'
-        puts 'Type: ' + type
       end
     end
   end
@@ -221,6 +233,51 @@ private
     end
   end
   
+  def construct_blueprint(item, array, blueprintkey)
+    blueprint = Item.where(:keytype => 'blueprint', :name => blueprintkey).first    
+
+    instances = Item.where(:blueprint_id => blueprint.id)
+
+    #array << instances.first.dictionary.tuples.first.item.value
+    #array << item
+  
+    instances.each do |i|
+      h = Hash.new
+
+      h = construct_dictionary(i, h)
+      
+      array << h
+    end
+
+    # Loop through each blueprint tuple.
+    #item.dictionary.tuples.each do |tuple|
+    #  keytype = tuple.item.keytype
+    #  
+    #  if keytype == 'string'
+    #    key = tuple.key
+    #    value = tuple.item.value
+    #    hash.store(key, value)
+    #  elsif keytype == 'dictionary'
+    #    key = tuple.key
+    #    h = Hash.new
+    #    value = construct_dictionary(tuple.item, h)
+    #    hash.store(key, h)
+    #  elsif keytype == 'array'
+    #    key = tuple.key
+    #    a = Array.new
+    #    value = construct_array(tuple.item, a)
+    #    hash.store(key, a)
+    #  elsif keytype == 'blueprint'
+    #    key = tuple.key
+    #    h = Hash.new
+    #    value = construct_dictionary(tuple.item, h)
+    #    hash.store(key, h)
+    #  end
+    #end
+
+    array
+  end
+
   def construct_dictionary(item, hash)
     # Loop through each endpoint tuple.
     item.dictionary.tuples.each do |tuple|
@@ -239,6 +296,11 @@ private
         key = tuple.key
         a = Array.new
         value = construct_array(tuple.item, a)
+        hash.store(key, a)
+      elsif keytype == 'blueprint'
+        key = tuple.key
+        a = Array.new
+        value = construct_blueprint(tuple.item, a, key)
         hash.store(key, a)
       end
     end
