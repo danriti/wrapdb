@@ -13,4 +13,9 @@ class EndpointsController < ApplicationController
       render :json => { 'status' => 'fail' }, :callback => params[:callback]
     end
   end
+
+
+  def test
+    render :json => params[:request_parameters]
+  end
 end

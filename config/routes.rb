@@ -11,6 +11,8 @@ EasyApi::Application.routes.draw do
 
   match 'endpoints/create', to: 'endpoints#create'
 
+  match 'test/body', to: 'endpoints#test'
+
   # omniauth-github related routes.
   #match 'auth/:provider/callback', to: 'sessions#create'
   #match 'auth/failure', to: redirect('/')

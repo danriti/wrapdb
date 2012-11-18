@@ -2333,3 +2333,18 @@ ActionView::MissingTemplate (Missing template projects/Hello World, application/
 Started GET "/" for 127.0.0.1 at 2012-11-17 19:50:02 -0500
 Processing by ProjectsController#index as HTML
 Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/create?name=dan" for 127.0.0.1 at 2012-11-17 19:52:03 -0500
+Connecting to database specified by database.yml
+Processing by UsersController#create as HTML
+  Parameters: {"name"=>"dan"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.4ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 00:52:03 UTC +00:00], ["image", nil], ["name", "dan"], ["provider", nil], ["uid", nil], ["updated_at", Sun, 18 Nov 2012 00:52:03 UTC +00:00]]
+  [1m[36m (64.2ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 174ms (Views: 0.4ms | ActiveRecord: 101.4ms)
+
+
+Started GET "/test/body" for 127.0.0.1 at 2012-11-17 20:05:26 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
