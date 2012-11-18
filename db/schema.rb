@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117195034) do
+ActiveRecord::Schema.define(:version => 20121118001201) do
 
   create_table "dictionaries", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(:version => 20121117195034) do
     t.integer  "erray_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "blueprint_id"
   end
 
+  add_index "items", ["blueprint_id"], :name => "index_items_on_blueprint_id"
   add_index "items", ["dictionary_id"], :name => "index_items_on_dictionary_id"
   add_index "items", ["erray_id"], :name => "index_items_on_erray_id"
 
