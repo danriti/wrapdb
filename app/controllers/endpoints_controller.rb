@@ -15,7 +15,6 @@ class EndpointsController < ApplicationController
       endpoint.item = item
       endpoint.save
 
-      #first_function(blob, d)
       create_dictionary(item, blob)
 
       render :json => { 'id' => endpoint.id, 'status' => 'success' }, :callback => params[:callback]
@@ -30,7 +29,8 @@ class EndpointsController < ApplicationController
     
     if endpoint != nil
       h = Hash.new
-      h = second_function(endpoint.dictionary, h)
+      #h = second_function(endpoint.item.dictionary, h)
+      h = construct_dictionary(endpoint.item, h)
 
       render :json => h
     else
@@ -52,15 +52,53 @@ class EndpointsController < ApplicationController
 
 private
 
-  def create_string_item(value)
+  def create_item(value, keytype)
     Item.create!(:value => value,
-                 :keytype => 'string')
+                 :keytype => keytype)
   end
 
-  def create_dictionary_item
-    Item.create!(:value => nil,
-                 :keytype => 'dictionary')
-  end
+  def create_array(item, blob)
+    e = Erray.create!
+
+    item.erray = e
+    item.save
+
+    tuple = Tuple.new(:key => nil)
+    tuple.erray = e
+
+    blob['value'].each do |i|
+      type = i['type']
+      value = i['value']
+
+      if type == 'value'
+        puts 'Value => ' + value
+
+        new_item = create_item(value, 'string')
+        new_item.save
+
+        tuple.item = new_item
+        tuple.save
+  
+      elsif type == 'dictionary'
+        puts 'Type: ' + type
+        
+        new_item = create_item(nil, 'dictionary')
+        tuple.item = new_item
+        tuple.save
+
+        create_dictionary(new_item, i) 
+
+      elsif type == 'array'
+        puts 'Type: ' + type
+        
+        new_item = create_item(nil, 'array')
+        tuple.item = new_item
+        tuple.save
+
+        create_array(new_item, i)
+      end
+    end
+  end 
 
   # Create a dictionary and all its children in the db.
   def create_dictionary(item, blob)
@@ -81,7 +119,7 @@ private
       if type == 'tuple'
         puts 'Type: ' + type + ' => { ' + key + ' : ' + value + ' }'
 
-        new_item = create_string_item(value)
+        new_item = create_item(value, 'string')
         tuple.item = new_item
         tuple.save
   
@@ -89,26 +127,21 @@ private
       elsif type == 'dictionary'
         puts 'Type: ' + type
         
-        new_item = create_dictionary_item
+        new_item = create_item(nil, 'dictionary')
+        tuple.item = new_item
+        tuple.save
 
         create_dictionary(new_item, i) 
-
-        #item = Item.new(:value => nil,
-        #                :keytype => 'dictionary')
-        #item.dictionary = d
-        #item.save
-  
-        #tuple = Tuple.new(:key => key)
-        #tuple.dictionary = dictionary
-        #tuple.item = item
-        #tuple.save
-
-        # Get recursive and digest the dictionary.
-        #first_function(i, d)
 
       # Array
       elsif type == 'array'
         puts 'Type: ' + type
+        
+        new_item = create_item(nil, 'array')
+        tuple.item = new_item
+        tuple.save
+
+        create_array(new_item, i)
       end
     end
 
@@ -166,10 +199,31 @@ private
     end
   end
 
-  # Do something else cool.
-  def second_function(dictionary, hash)
+  def construct_array(item, array)
     # Loop through each endpoint tuple.
-    dictionary.tuples.each do |tuple|
+    item.erray.tuples.each do |tuple|
+      keytype = tuple.item.keytype
+      value = tuple.item.value
+    
+      puts 'Construct Value: ' + value
+      
+      if keytype == 'string'
+        array << value
+      elsif keytype == 'dictionary'
+        h = Hash.new
+        value = construct_dictionary(i, h)
+        array << value
+      elsif keytype == 'array'
+        a = Array.new
+        value = construct_array(i, a)
+        array << value
+      end
+    end
+  end
+  
+  def construct_dictionary(item, hash)
+    # Loop through each endpoint tuple.
+    item.dictionary.tuples.each do |tuple|
       keytype = tuple.item.keytype
       
       if keytype == 'string'
@@ -179,15 +233,17 @@ private
       elsif keytype == 'dictionary'
         key = tuple.key
         h = Hash.new
-        value = second_function(tuple.item.dictionary, h)
+        value = construct_dictionary(tuple.item, h)
         hash.store(key, h)
       elsif keytype == 'array'
-        nil
+        key = tuple.key
+        a = Array.new
+        value = construct_array(tuple.item, a)
+        hash.store(key, a)
       end
     end
 
     hash
   end
-
 
 end

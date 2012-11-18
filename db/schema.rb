@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118040853) do
+ActiveRecord::Schema.define(:version => 20121118060206) do
 
   create_table "dictionaries", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -66,9 +66,11 @@ ActiveRecord::Schema.define(:version => 20121118040853) do
     t.integer  "item_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "erray_id"
   end
 
   add_index "tuples", ["dictionary_id"], :name => "index_tuples_on_dictionary_id"
+  add_index "tuples", ["erray_id"], :name => "index_tuples_on_erray_id"
   add_index "tuples", ["item_id"], :name => "index_tuples_on_item_id"
 
   create_table "users", :force => true do |t|
