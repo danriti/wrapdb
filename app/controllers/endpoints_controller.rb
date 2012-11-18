@@ -58,6 +58,27 @@ class EndpointsController < ApplicationController
         tuple.save
 
         create_instance_dictionary(new_item, t.item, d, data[key])
+      elsif keytype == 'array'
+        array = t.item.erray
+
+        e = Erray.create!
+
+        new_item = create_item(nil, 'array')
+        new_item.erray = e
+        new_item.save
+        tuple.item = new_item
+        tuple.save
+
+        arrays = data[key]
+
+        arrays.each do |a|
+          new_tuple = Tuple.new(:key => nil)
+          new_tuple.erray = e
+          
+          new_item = create_item(a, 'string')
+          new_tuple.item = new_item
+          new_tuple.save
+        end
       end
     end
   end
@@ -259,6 +280,9 @@ private
       h = Hash.new
 
       h = construct_dictionary(i, h)
+    
+      puts 'INSTANCE!!!'
+      puts i.dictionary.tuples.size
       
       array << h
     end
@@ -296,6 +320,7 @@ private
     # Loop through each endpoint tuple.
     item.dictionary.tuples.each do |tuple|
       keytype = tuple.item.keytype
+      puts 'keytype: ' + keytype
       
       if keytype == 'string'
         key = tuple.key
@@ -307,6 +332,7 @@ private
         value = construct_dictionary(tuple.item, h)
         hash.store(key, h)
       elsif keytype == 'array'
+        puts 'construct_dictionary#array'
         key = tuple.key
         a = Array.new
         value = construct_array(tuple.item, a)

@@ -7416,3 +7416,1392 @@ Started GET "/endpoints/get" for 127.0.0.1 at 2012-11-18 05:01:30 -0500
 Processing by EndpointsController#get_endpoints as HTML
   [1m[36mEndpoint Load (0.8ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" INNER JOIN "items" ON "items"."id" = "endpoints"."item_id" WHERE "items"."keytype" = 'blueprint'[0m
 Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:29:25 -0500
+Connecting to database specified by database.yml
+
+ActionController::RoutingError (No route matches [POST] "/instance/create"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/dan/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/dan/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/dan/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (27.0ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:29:42 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (35.4ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[35m (17.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", 16], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["value", nil]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["value", "this is a title"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", 16], ["erray_id", nil], ["item_id", 46], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[35m (7.2ms)[0m  commit transaction
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["value", "this is the text"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", 16], ["erray_id", nil], ["item_id", 47], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["value", nil]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "dictionary_id" = 17, "updated_at" = '2012-11-18 11:29:42.882094' WHERE "items"."id" = 48
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", 16], ["erray_id", nil], ["item_id", 48], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["value", "andrew"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", 17], ["erray_id", nil], ["item_id", 49], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[36m (8.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["value", "a@b.com"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00], ["dictionary_id", 17], ["erray_id", nil], ["item_id", 50], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:29:42 UTC +00:00]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+Completed 500 Internal Server Error in 453ms
+
+NoMethodError (undefined method `each' for nil:NilClass):
+  app/controllers/endpoints_controller.rb:66:in `block in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:39:in `create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:98:in `create_instance'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:30:15 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[36m (52.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", 18], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["value", nil]]
+  [1m[35m (7.8ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["value", "this is a title"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", 18], ["erray_id", nil], ["item_id", 52], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[36m (10.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["value", "this is the text"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", 18], ["erray_id", nil], ["item_id", 53], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[35m (8.6ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["value", nil]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mUPDATE "items" SET "dictionary_id" = 19, "updated_at" = '2012-11-18 11:30:15.352681' WHERE "items"."id" = 54[0m
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", 18], ["erray_id", nil], ["item_id", 54], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["value", "andrew"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", 19], ["erray_id", nil], ["item_id", 55], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[35m (7.1ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["value", "a@b.com"]]
+  [1m[35m (6.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00], ["dictionary_id", 19], ["erray_id", nil], ["item_id", 56], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:30:15 UTC +00:00]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+Completed 500 Internal Server Error in 267ms
+
+NoMethodError (undefined method `each' for nil:NilClass):
+  app/controllers/endpoints_controller.rb:69:in `block in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:39:in `create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:101:in `create_instance'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:30:38 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", 20], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["value", nil]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["value", "this is a title"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", 20], ["erray_id", nil], ["item_id", 58], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[35m (6.7ms)[0m  commit transaction
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["value", "this is the text"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", 20], ["erray_id", nil], ["item_id", 59], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[36m (12.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["value", nil]]
+  [1m[35m (9.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "dictionary_id" = 21, "updated_at" = '2012-11-18 11:30:38.787403' WHERE "items"."id" = 60
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", 20], ["erray_id", nil], ["item_id", 60], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[35m (6.6ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["value", "andrew"]]
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", 21], ["erray_id", nil], ["item_id", 61], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["value", "a@b.com"]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00], ["dictionary_id", 21], ["erray_id", nil], ["item_id", 62], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:30:38 UTC +00:00]]
+  [1m[35m (8.6ms)[0m  commit transaction
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+Completed 500 Internal Server Error in 260ms
+
+NoMethodError (undefined method `each' for nil:NilClass):
+  app/controllers/endpoints_controller.rb:69:in `block in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:39:in `create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:101:in `create_instance'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:30:56 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[36m (13.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", 22], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["value", nil]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["value", "this is a title"]]
+  [1m[35m (2.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", 22], ["erray_id", nil], ["item_id", 64], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["value", "this is the text"]]
+  [1m[36m (3.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", 22], ["erray_id", nil], ["item_id", 65], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["value", nil]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "items" SET "dictionary_id" = 23, "updated_at" = '2012-11-18 11:30:57.156020' WHERE "items"."id" = 66[0m
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", 22], ["erray_id", nil], ["item_id", 66], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["value", "andrew"]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", 23], ["erray_id", nil], ["item_id", 67], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[35m (6.9ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["value", "a@b.com"]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00], ["dictionary_id", 23], ["erray_id", nil], ["item_id", 68], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:30:57 UTC +00:00]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+Completed 500 Internal Server Error in 210ms
+
+NoMethodError (undefined method `each' for nil:NilClass):
+  app/controllers/endpoints_controller.rb:70:in `block in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:39:in `create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:102:in `create_instance'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.7ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:31:16 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", 24], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["value", nil]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["value", "this is a title"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", 24], ["erray_id", nil], ["item_id", 70], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["value", "this is the text"]]
+  [1m[35m (5.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", 24], ["erray_id", nil], ["item_id", 71], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["value", nil]]
+  [1m[35m (7.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "dictionary_id" = 25, "updated_at" = '2012-11-18 11:31:16.824215' WHERE "items"."id" = 72
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", 24], ["erray_id", nil], ["item_id", 72], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[35m (11.9ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["value", "andrew"]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", 25], ["erray_id", nil], ["item_id", 73], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["value", "a@b.com"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00], ["dictionary_id", 25], ["erray_id", nil], ["item_id", 74], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:31:16 UTC +00:00]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+Completed 500 Internal Server Error in 226ms
+
+ActiveRecord::AssociationTypeMismatch (Erray(#-618610528) expected, got Item(#-614794118)):
+  app/controllers/endpoints_controller.rb:68:in `block (2 levels) in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:66:in `each'
+  app/controllers/endpoints_controller.rb:66:in `block in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:39:in `create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:98:in `create_instance'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.7ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:32:36 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[36m (65.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (3.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", 26], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["value", nil]]
+  [1m[35m (18.8ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["value", "this is a title"]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", 26], ["erray_id", nil], ["item_id", 76], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[36m (8.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["value", "this is the text"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", 26], ["erray_id", nil], ["item_id", 77], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[35m (8.2ms)[0m  commit transaction
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["value", nil]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "items" SET "dictionary_id" = 27, "updated_at" = '2012-11-18 11:32:36.859119' WHERE "items"."id" = 78[0m
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", 26], ["erray_id", nil], ["item_id", 78], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["value", "andrew"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", 27], ["erray_id", nil], ["item_id", 79], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["value", "a@b.com"]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00], ["dictionary_id", 27], ["erray_id", nil], ["item_id", 80], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:32:36 UTC +00:00]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mErray Load (0.1ms)[0m  [1mSELECT "errays".* FROM "errays" WHERE "errays"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 415ms
+
+NoMethodError (undefined method `value' for "foo":String):
+  app/controllers/endpoints_controller.rb:70:in `block (2 levels) in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:66:in `each'
+  app/controllers/endpoints_controller.rb:66:in `block in create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:39:in `create_instance_dictionary'
+  app/controllers/endpoints_controller.rb:98:in `create_instance'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:33:01 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[36m (53.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", 28], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", nil]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", "this is a title"]]
+  [1m[35m (6.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", 28], ["erray_id", nil], ["item_id", 82], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[36m (11.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", "this is the text"]]
+  [1m[36m (6.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", 28], ["erray_id", nil], ["item_id", 83], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[35m (9.6ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", nil]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "items" SET "dictionary_id" = 29, "updated_at" = '2012-11-18 11:33:01.737822' WHERE "items"."id" = 84[0m
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", 28], ["erray_id", nil], ["item_id", 84], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", "andrew"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", 29], ["erray_id", nil], ["item_id", 85], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[35m (6.1ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", "a@b.com"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", 29], ["erray_id", nil], ["item_id", 86], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mErray Load (0.2ms)[0m  [1mSELECT "errays".* FROM "errays" WHERE "errays"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", "foo"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", 1], ["item_id", 87], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["value", "bar"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00], ["dictionary_id", nil], ["erray_id", 1], ["item_id", 88], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:33:01 UTC +00:00]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 371ms (Views: 0.4ms | ActiveRecord: 180.8ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:33:24 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 6 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 6[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 19 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 8 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 8[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 22 LIMIT 1
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 23 LIMIT 1[0m
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 24 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 9 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 9
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 25 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 26 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 10 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 10
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 28 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 29 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 30 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 11 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 11[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 31 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 32 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 12 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 12[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 34 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 35 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 36 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 13 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 13
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 37 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 38 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 14 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 14
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 40 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 41 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 42 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 15 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 15[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 43 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 44 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 16 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 16[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 46 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 47 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 48 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 17 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 17
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 49 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 50 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 18 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 18
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 52 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 53 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 54 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 19 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 19[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 55 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 56 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 20 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 20[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 58 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 59 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 60 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 21 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 21
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 61 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 62 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 22 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 22
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 64 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 65 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 66 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 23 LIMIT 1
+  [1m[36mTuple Load (0.3ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 23[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 67 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 68 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 24 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 24[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 70 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 71 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 72 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 25 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 25
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 73 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 74 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 26 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 26
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 76 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 77 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 78 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 27 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 27[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 79 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 80 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 28 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 28[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 82 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 83 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 84 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 29 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 29
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 85 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 86 LIMIT 1
+Completed 200 OK in 144ms (Views: 3.4ms | ActiveRecord: 21.4ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (60.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (13.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "name" varchar(255), "image" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195008')
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProjects (20121117195012)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.6ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195012')
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEndpoints (20121117195017)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "endpoints" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "project_id" integer, "dictionary_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_endpoints_on_project_id" ON "endpoints" ("project_id")[0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_info('index_endpoints_on_project_id')[0m
+  [1m[35m (0.6ms)[0m  CREATE INDEX "index_endpoints_on_dictionary_id" ON "endpoints" ("dictionary_id")
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195017')[0m
+  [1m[35m (7.3ms)[0m  commit transaction
+Migrating to CreateDictionaries (20121117195021)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "dictionaries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195021')[0m
+  [1m[35m (3.6ms)[0m  commit transaction
+Migrating to CreateErrays (20121117195025)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "errays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195025')[0m
+  [1m[35m (3.1ms)[0m  commit transaction
+Migrating to CreateItems (20121117195030)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "keytype" varchar(255), "value" varchar(255), "dictionary_id" integer, "erray_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_items_on_dictionary_id" ON "items" ("dictionary_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_dictionary_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_items_on_erray_id" ON "items" ("erray_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195030')
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTuples (20121117195034)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tuples" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(255), "dictionary_id" integer, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_dictionary_id" ON "tuples" ("dictionary_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_tuples_on_item_id" ON "tuples" ("item_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195034')[0m
+  [1m[35m (7.7ms)[0m  commit transaction
+Migrating to AddBlueprintIndexToItems (20121118001201)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "items" ADD "blueprint_id" integer
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.4ms)[0m  CREATE INDEX "index_items_on_blueprint_id" ON "items" ("blueprint_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121118001201')[0m
+  [1m[35m (4.5ms)[0m  commit transaction
+Migrating to RemoveDictionaryIndexFromEndpoints (20121118040625)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040625')
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddItemIndexToEndpoints (20121118040853)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "endpoints" ADD "item_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_endpoints_on_item_id" ON "endpoints" ("item_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040853')
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddErrayIndexToTuples (20121118060206)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "tuples" ADD "erray_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_item_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_dictionary_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_tuples_on_erray_id" ON "tuples" ("erray_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118060206')
+  [1m[36m (5.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("dictionaries")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("endpoints")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("errays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_blueprint_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_projects_on_user_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_erray_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" [0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" 
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" [0m
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" 
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" [0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:34:00 UTC +00:00], ["image", nil], ["name", "Bob"], ["provider", nil], ["uid", nil], ["updated_at", Sun, 18 Nov 2012 11:34:00 UTC +00:00]]
+  [1m[36m (15.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "projects" ("created_at", "name", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:34:00 UTC +00:00], ["name", "Krapp"], ["updated_at", Sun, 18 Nov 2012 11:34:00 UTC +00:00], ["user_id", 1]]
+  [1m[35m (6.6ms)[0m  commit transaction
+
+
+Started POST "/endpoints/create?name=blogpost&projectid=1" for 127.0.0.1 at 2012-11-18 06:35:10 -0500
+Connecting to database specified by database.yml
+Processing by EndpointsController#create as */*
+  Parameters: {"blob"=>"{     \"type\": \"blueprint\",     \"value\": [         {             \"key\": \"Title\",             \"type\": \"tuple\",             \"value\": \"My First Blog Post\"         },         {             \"key\": \"Text\",             \"type\": \"tuple\",             \"value\": \"This is a blog post. Wow cool.\"         },         {             \"key\": \"Author\",             \"type\": \"dictionary\",             \"value\": [                 {                     \"key\": \"Name\",                     \"type\": \"tuple\",                     \"value\": \"Andrew\"                 },                 {                     \"key\": \"Email\",                     \"type\": \"tuple\",                     \"value\": \"Andrew.Hyde@espn.com\"                 }             ]         },         {             \"key\": \"Tags\",             \"type\": \"array\",             \"value\": [                 {                     \"type\": \"value\",                     \"value\": \"Foo\"                 },                 {                     \"type\": \"value\",                     \"value\": \"Bar\"                 }             ]         }     ],     \"key\": \"blogpost\",     \"projectID\": \"1\" }", "name"=>"blogpost", "projectid"=>"1"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (7.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:11 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "blueprint"], ["name", "blogpost"], ["updated_at", Sun, 18 Nov 2012 11:35:11 UTC +00:00], ["value", nil]]
+  [1m[35m (13.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "endpoints" ("created_at", "dictionary_id", "item_id", "name", "project_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:11 UTC +00:00], ["dictionary_id", nil], ["item_id", 1], ["name", "blogpost"], ["project_id", 1], ["updated_at", Sun, 18 Nov 2012 11:35:11 UTC +00:00]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:11 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:35:11 UTC +00:00]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "dictionary_id" = 1, "updated_at" = '2012-11-18 11:35:11.978009' WHERE "items"."id" = 1
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", "My First Blog Post"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", 1], ["erray_id", nil], ["item_id", 2], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", "This is a blog post. Wow cool."]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", 1], ["erray_id", nil], ["item_id", 3], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", nil]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", 1], ["erray_id", nil], ["item_id", 4], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[35m (39.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "dictionary_id" = 2, "updated_at" = '2012-11-18 11:35:12.103636' WHERE "items"."id" = 4
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", "Andrew"]]
+  [1m[35m (40.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", 2], ["erray_id", nil], ["item_id", 5], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (12.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", "Andrew.Hyde@espn.com"]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", 2], ["erray_id", nil], ["item_id", 6], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "array"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", nil]]
+  [1m[35m (3.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", 1], ["erray_id", nil], ["item_id", 7], ["key", "Tags"], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "errays" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "erray_id" = 1, "updated_at" = '2012-11-18 11:35:12.238681' WHERE "items"."id" = 7
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", "Foo"]]
+  [1m[35m (5.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", 1], ["item_id", 8], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:12 UTC +00:00], ["value", "Bar"]]
+  [1m[35m (8.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "tuples" SET "item_id" = 9, "updated_at" = '2012-11-18 11:35:12.275620' WHERE "tuples"."id" = 7
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 554ms (Views: 0.4ms | ActiveRecord: 281.0ms)
+
+
+Started POST "/endpoints/create?name=MyBlogEndpoint&projectid=1" for 127.0.0.1 at 2012-11-18 06:35:15 -0500
+Processing by EndpointsController#create as */*
+  Parameters: {"blob"=>"{     \"type\": \"endpoint\",     \"value\": [         {             \"key\": \"Title\",             \"type\": \"tuple\",             \"value\": \"My Blog\"         },         {             \"key\": \"blogpost\",             \"type\": \"blueprint\"         }     ],     \"key\": \"BlogPostTest\",     \"projectID\": \"1\" }", "name"=>"MyBlogEndpoint", "projectid"=>"1"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = 1 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "endpoint"], ["name", "BlogPostTest"], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["value", nil]]
+  [1m[36m (47.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "endpoints" ("created_at", "dictionary_id", "item_id", "name", "project_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["dictionary_id", nil], ["item_id", 10], ["name", "MyBlogEndpoint"], ["project_id", 1], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "items" SET "dictionary_id" = 3, "updated_at" = '2012-11-18 11:35:15.634779' WHERE "items"."id" = 10[0m
+  [1m[35m (7.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["value", "My Blog"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["dictionary_id", 3], ["erray_id", nil], ["item_id", 11], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "blueprint"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["value", nil]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00], ["dictionary_id", 3], ["erray_id", nil], ["item_id", 12], ["key", "blogpost"], ["updated_at", Sun, 18 Nov 2012 11:35:15 UTC +00:00]]
+  [1m[35m (3.7ms)[0m  commit transaction
+Completed 200 OK in 114ms (Views: 0.3ms | ActiveRecord: 86.5ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:35:18 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mItem Load (0.7ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00]]
+  [1m[35m (47.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", 4], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["value", nil]]
+  [1m[36m (11.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.4ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1
+  [1m[36mTuple Load (0.3ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["value", "this is a title"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", 4], ["erray_id", nil], ["item_id", 14], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["value", "this is the text"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", 4], ["erray_id", nil], ["item_id", 15], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["value", nil]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "dictionary_id" = 5, "updated_at" = '2012-11-18 11:35:18.964773' WHERE "items"."id" = 16
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", 4], ["erray_id", nil], ["item_id", 16], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["value", "andrew"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00], ["dictionary_id", 5], ["erray_id", nil], ["item_id", 17], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:35:18 UTC +00:00]]
+  [1m[36m (5.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["value", "a@b.com"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["dictionary_id", 5], ["erray_id", nil], ["item_id", 18], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1[0m
+  [1m[35mErray Load (0.2ms)[0m  SELECT "errays".* FROM "errays" WHERE "errays"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["value", "foo"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["dictionary_id", nil], ["erray_id", 1], ["item_id", 19], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00]]
+  [1m[35m (6.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["value", "bar"]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00], ["dictionary_id", nil], ["erray_id", 1], ["item_id", 20], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:35:19 UTC +00:00]]
+  [1m[35m (4.4ms)[0m  commit transaction
+Completed 200 OK in 276ms (Views: 0.3ms | ActiveRecord: 157.7ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:35:24 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.7ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.7ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.5ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.5ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 200 OK in 38ms (Views: 0.6ms | ActiveRecord: 5.5ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:40:51 -0500
+Connecting to database specified by database.yml
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.3ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 200 OK in 270ms (Views: 0.6ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:41:22 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.3ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.5ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.3ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+Completed 200 OK in 113ms (Views: 0.7ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:41:53 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 200 OK in 135ms (Views: 0.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:42:28 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+Completed 200 OK in 98ms (Views: 0.6ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:48:50 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+Completed 500 Internal Server Error in 44ms
+
+NoMethodError (undefined method `tuples' for nil:NilClass):
+  app/controllers/endpoints_controller.rb:309:in `construct_dictionary'
+  app/controllers/endpoints_controller.rb:117:in `get_render'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.4ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:50:58 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.3ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 500 Internal Server Error in 136ms
+
+TypeError (can't convert Item into String):
+  app/controllers/endpoints_controller.rb:276:in `+'
+  app/controllers/endpoints_controller.rb:276:in `block in construct_blueprint'
+  app/controllers/endpoints_controller.rb:271:in `construct_blueprint'
+  app/controllers/endpoints_controller.rb:334:in `block in construct_dictionary'
+  app/controllers/endpoints_controller.rb:312:in `construct_dictionary'
+  app/controllers/endpoints_controller.rb:117:in `get_render'
+
+
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/dan/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:51:30 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+Completed 200 OK in 100ms (Views: 0.7ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:52:01 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 200 OK in 136ms (Views: 0.6ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:52:25 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+Completed 200 OK in 97ms (Views: 0.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:52:37 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 200 OK in 100ms (Views: 0.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:53:32 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.2ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.3ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (1.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+Completed 200 OK in 135ms (Views: 0.6ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:58:40 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEndpoint Load (0.2ms)[0m  [1mSELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1
+  [1m[36mDictionary Load (0.1ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1[0m
+  [1m[35mDictionary Load (0.1ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1[0m
+Completed 200 OK in 98ms (Views: 0.6ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/endpoints/instance/create?blueprintname=blogpost" for 127.0.0.1 at 2012-11-18 06:58:45 -0500
+Processing by EndpointsController#create_instance as */*
+  Parameters: {"data"=>"{     \"Title\": \"this is a title\",     \"Text\": \"this is the text\",     \"Author\": {         \"Name\": \"andrew\",         \"Email\": \"a@b.com\"     },     \"Tags\": [         \"foo\",         \"bar\"     ] }", "blueprintname"=>"blogpost"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mItem Load (0.8ms)[0m  SELECT "items".* FROM "items" WHERE "items"."name" = 'blogpost' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (48.6ms)[0m  INSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (57.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", 1], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 6], ["erray_id", nil], ["keytype", "instance"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", nil]]
+  [1m[35m (8.2ms)[0m  commit transaction
+  [1m[36mDictionary Load (0.5ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 1 LIMIT 1[0m
+  [1m[35mTuple Load (0.6ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 1
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", "this is a title"]]
+  [1m[35m (9.1ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 6], ["erray_id", nil], ["item_id", 22], ["key", "Title"], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", "this is the text"]]
+  [1m[36m (6.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 6], ["erray_id", nil], ["item_id", 23], ["key", "Text"], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[35m (5.5ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 4 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "dictionaries" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "dictionary"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", nil]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "items" SET "dictionary_id" = 7, "updated_at" = '2012-11-18 11:58:45.707630' WHERE "items"."id" = 24[0m
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 6], ["erray_id", nil], ["item_id", 24], ["key", "Author"], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (10.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 2 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 2[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 5 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", "andrew"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 7], ["erray_id", nil], ["item_id", 25], ["key", "Name"], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 6 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", "a@b.com"]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 7], ["erray_id", nil], ["item_id", 26], ["key", "Email"], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 7 LIMIT 1
+  [1m[36mErray Load (0.1ms)[0m  [1mSELECT "errays".* FROM "errays" WHERE "errays"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "errays" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "array"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", nil]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "items" SET "erray_id" = 2, "updated_at" = '2012-11-18 11:58:45.799081' WHERE "items"."id" = 27[0m
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", 6], ["erray_id", nil], ["item_id", 27], ["key", "Tags"], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", "foo"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", 2], ["item_id", 28], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("blueprint_id", "created_at", "dictionary_id", "erray_id", "keytype", "name", "updated_at", "value") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["blueprint_id", nil], ["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", nil], ["keytype", "string"], ["name", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["value", "bar"]]
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tuples" ("created_at", "dictionary_id", "erray_id", "item_id", "key", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00], ["dictionary_id", nil], ["erray_id", 2], ["item_id", 29], ["key", nil], ["updated_at", Sun, 18 Nov 2012 11:58:45 UTC +00:00]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 365ms (Views: 0.4ms | ActiveRecord: 247.7ms)
+
+
+Started GET "/endpoints/render?id=2" for 127.0.0.1 at 2012-11-18 06:58:48 -0500
+Processing by EndpointsController#get_render as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mEndpoint Load (0.7ms)[0m  SELECT "endpoints".* FROM "endpoints" WHERE "endpoints"."id" = 2 LIMIT 1
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 10 LIMIT 1[0m
+  [1m[35mDictionary Load (0.4ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 3 LIMIT 1
+  [1m[36mTuple Load (0.6ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 3[0m
+  [1m[35mItem Load (0.5ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 12 LIMIT 1[0m
+  [1m[35mItem Load (0.5ms)[0m  SELECT "items".* FROM "items" WHERE "items"."keytype" = 'blueprint' AND "items"."name" = 'blogpost' LIMIT 1
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."blueprint_id" = 1[0m
+  [1m[35mDictionary Load (0.3ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 4 LIMIT 1
+  [1m[36mTuple Load (0.5ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 4[0m
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 14 LIMIT 1
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 15 LIMIT 1[0m
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 16 LIMIT 1
+  [1m[36mDictionary Load (0.3ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 5 LIMIT 1[0m
+  [1m[35mTuple Load (0.5ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 5
+  [1m[36mItem Load (0.6ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 17 LIMIT 1[0m
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 18 LIMIT 1
+  [1m[36mDictionary Load (0.2ms)[0m  [1mSELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 6 LIMIT 1[0m
+  [1m[35mTuple Load (0.2ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 6
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 22 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 23 LIMIT 1
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 24 LIMIT 1[0m
+  [1m[35mDictionary Load (0.2ms)[0m  SELECT "dictionaries".* FROM "dictionaries" WHERE "dictionaries"."id" = 7 LIMIT 1
+  [1m[36mTuple Load (0.2ms)[0m  [1mSELECT "tuples".* FROM "tuples" WHERE "tuples"."dictionary_id" = 7[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 25 LIMIT 1
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 26 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 27 LIMIT 1
+  [1m[36mErray Load (0.2ms)[0m  [1mSELECT "errays".* FROM "errays" WHERE "errays"."id" = 2 LIMIT 1[0m
+  [1m[35mTuple Load (0.3ms)[0m  SELECT "tuples".* FROM "tuples" WHERE "tuples"."erray_id" = 2
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 28 LIMIT 1[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 29 LIMIT 1
+Completed 200 OK in 76ms (Views: 1.0ms | ActiveRecord: 11.4ms)
