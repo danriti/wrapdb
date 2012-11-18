@@ -2348,3 +2348,15 @@ Completed 200 OK in 174ms (Views: 0.4ms | ActiveRecord: 101.4ms)
 Started GET "/test/body" for 127.0.0.1 at 2012-11-17 20:05:26 -0500
 Processing by EndpointsController#test as HTML
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test/body" for 127.0.0.1 at 2012-11-17 20:07:58 -0500
+Connecting to database specified by database.yml
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test/body?id=1" for 127.0.0.1 at 2012-11-17 20:08:20 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)

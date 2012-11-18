@@ -16,6 +16,6 @@ class EndpointsController < ApplicationController
 
 
   def test
-    render :json => params[:request_parameters]
+    render :json => params
   end
 end
