@@ -8805,3 +8805,389 @@ Processing by EndpointsController#get_render as HTML
   [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."id" = 28 LIMIT 1[0m
   [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."id" = 29 LIMIT 1
 Completed 200 OK in 76ms (Views: 1.0ms | ActiveRecord: 11.4ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (64.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (6.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "name" varchar(255), "image" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195008')
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProjects (20121117195012)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.5ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195012')
+  [1m[36m (12.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEndpoints (20121117195017)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "endpoints" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "project_id" integer, "dictionary_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.6ms)[0m  [1mCREATE INDEX "index_endpoints_on_project_id" ON "endpoints" ("project_id")[0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_project_id')[0m
+  [1m[35m (0.5ms)[0m  CREATE INDEX "index_endpoints_on_dictionary_id" ON "endpoints" ("dictionary_id")
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195017')[0m
+  [1m[35m (11.2ms)[0m  commit transaction
+Migrating to CreateDictionaries (20121117195021)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "dictionaries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195021')[0m
+  [1m[35m (5.8ms)[0m  commit transaction
+Migrating to CreateErrays (20121117195025)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "errays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195025')[0m
+  [1m[35m (5.0ms)[0m  commit transaction
+Migrating to CreateItems (20121117195030)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "keytype" varchar(255), "value" varchar(255), "dictionary_id" integer, "erray_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_items_on_dictionary_id" ON "items" ("dictionary_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_dictionary_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_items_on_erray_id" ON "items" ("erray_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195030')
+  [1m[36m (6.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTuples (20121117195034)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tuples" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(255), "dictionary_id" integer, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_dictionary_id" ON "tuples" ("dictionary_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_tuples_on_item_id" ON "tuples" ("item_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195034')[0m
+  [1m[35m (5.1ms)[0m  commit transaction
+Migrating to AddBlueprintIndexToItems (20121118001201)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "items" ADD "blueprint_id" integer
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_items_on_blueprint_id" ON "items" ("blueprint_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121118001201')[0m
+  [1m[35m (5.2ms)[0m  commit transaction
+Migrating to RemoveDictionaryIndexFromEndpoints (20121118040625)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040625')
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddItemIndexToEndpoints (20121118040853)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "endpoints" ADD "item_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_endpoints_on_item_id" ON "endpoints" ("item_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040853')
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddErrayIndexToTuples (20121118060206)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "tuples" ADD "erray_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_item_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_dictionary_id')
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_erray_id" ON "tuples" ("erray_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118060206')
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddUsernameToUser (20130105202738)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "username" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130105202738')
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("dictionaries")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("endpoints")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("errays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_blueprint_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_projects_on_user_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_erray_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+Migrating to CreateProjects (20121117195012)
+Migrating to CreateEndpoints (20121117195017)
+Migrating to CreateDictionaries (20121117195021)
+Migrating to CreateErrays (20121117195025)
+Migrating to CreateItems (20121117195030)
+Migrating to CreateTuples (20121117195034)
+Migrating to AddBlueprintIndexToItems (20121118001201)
+Migrating to RemoveDictionaryIndexFromEndpoints (20121118040625)
+Migrating to AddItemIndexToEndpoints (20121118040853)
+Migrating to AddErrayIndexToTuples (20121118060206)
+Migrating to AddUsernameToUser (20130105202738)
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("dictionaries")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("endpoints")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("errays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_blueprint_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_projects_on_user_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_info('index_tuples_on_erray_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (173.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (90.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "name" varchar(255), "image" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195008')
+  [1m[36m (12.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProjects (20121117195012)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195012')
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEndpoints (20121117195017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "endpoints" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "project_id" integer, "dictionary_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_endpoints_on_project_id" ON "endpoints" ("project_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_project_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_endpoints_on_dictionary_id" ON "endpoints" ("dictionary_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195017')[0m
+  [1m[35m (7.1ms)[0m  commit transaction
+Migrating to CreateDictionaries (20121117195021)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "dictionaries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195021')[0m
+  [1m[35m (5.9ms)[0m  commit transaction
+Migrating to CreateErrays (20121117195025)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "errays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195025')[0m
+  [1m[35m (5.0ms)[0m  commit transaction
+Migrating to CreateItems (20121117195030)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "keytype" varchar(255), "value" varchar(255), "dictionary_id" integer, "erray_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.4ms)[0m  CREATE INDEX "index_items_on_dictionary_id" ON "items" ("dictionary_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_dictionary_id')
+  [1m[36m (0.4ms)[0m  [1mCREATE INDEX "index_items_on_erray_id" ON "items" ("erray_id")[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195030')
+  [1m[36m (7.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTuples (20121117195034)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "tuples" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(255), "dictionary_id" integer, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.5ms)[0m  [1mCREATE INDEX "index_tuples_on_dictionary_id" ON "tuples" ("dictionary_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.4ms)[0m  CREATE INDEX "index_tuples_on_item_id" ON "tuples" ("item_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195034')[0m
+  [1m[35m (7.3ms)[0m  commit transaction
+Migrating to AddBlueprintIndexToItems (20121118001201)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "items" ADD "blueprint_id" integer
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.5ms)[0m  CREATE INDEX "index_items_on_blueprint_id" ON "items" ("blueprint_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121118001201')[0m
+  [1m[35m (6.6ms)[0m  commit transaction
+Migrating to RemoveDictionaryIndexFromEndpoints (20121118040625)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040625')
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddItemIndexToEndpoints (20121118040853)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "endpoints" ADD "item_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_endpoints_on_item_id" ON "endpoints" ("item_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040853')
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddErrayIndexToTuples (20121118060206)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "tuples" ADD "erray_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_item_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_dictionary_id')
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_erray_id" ON "tuples" ("erray_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118060206')
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddUsernameToUser (20130105202738)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "users" ADD "username" varchar(255)[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130105202738')
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("dictionaries")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("endpoints")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("errays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_blueprint_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_projects_on_user_id')[0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_erray_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (47.0381ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (4.0519ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.2866ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=test documents=[{:name=>"dan"}] flags=[] (1.3344ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.7325ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.7069ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.8795ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:drop=>"db.easyAPI.users.deepak.business"} (7.1645ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.business documents=[{:name=>"John"}] flags=[] (5.3279ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.8691ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.5393ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.7348ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:drop=>"db.easyAPI.users.deepak.business"} (155.6897ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.business documents=[{:name=>"John"}] flags=[] (0.3734ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.2492ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.7582ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.4409ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:drop=>"db.easyAPI.users.deepak.objects.business"} (2.2762ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.objects.business documents=[{"name"=>"John"}] flags=[] (5.4836ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.3630ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.9024ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.3863ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.objects.business documents=[{"name"=>"John"}] flags=[] (1.4985ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.0850ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (4.3721ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (5.3921ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=test documents=[{:name=>"dan"}] flags=[] (1.3518ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=test documents=[{:name=>"ashish"}] flags=[] (0.3314ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.4482ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.3209ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:drop=>"test"} (8.2879ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=test documents=[{:name=>"ashish"}] flags=[] (0.3369ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.9671ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.6294ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.1996ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.objects.time documents=[{:name=>"testing123"}] flags=[] (6.4793ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.objects.time documents=[{:name=>"blah blah"}] flags=[] (0.3991ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=db.easyAPI.users.deepak.objects.time documents=[{:name=>"foobar"}] flags=[] (0.2873ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5554ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (1.4167ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (1.2259ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=foobar documents=[{:name=>"testing123"}] flags=[] (1.8606ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=foobar documents=[{:name=>"blah blah"}] flags=[] (0.1945ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=foobar documents=[{:name=>"foobar"}] flags=[] (0.1836ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.3522ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.7556ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.3660ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=helloworld documents=[{:name=>"testing123"}] flags=[] (6.1450ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=helloworld documents=[{:name=>"blah blah"}] flags=[] (0.2768ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=helloworld documents=[{:name=>"foobar"}] flags=[] (0.2291ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.2955ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.6931ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.6380ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.pizza documents=[{:name=>"testing123"}] flags=[] (3.7053ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.pizza documents=[{:name=>"blah blah"}] flags=[] (0.3285ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.pizza documents=[{:name=>"foobar"}] flags=[] (0.2301ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.5418ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.8199ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.2823ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.date documents=[{"name"=>"testing123"}] flags=[] (0.8979ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.date documents=[{"name"=>"blah blah"}] flags=[] (0.2389ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.date documents=[{"name"=>"foobar"}] flags=[] (0.4056ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4605ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.7236ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.4981ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:drop=>"easyAPI.users.deepak.objects.date"} (1.4937ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:drop=>"easyAPI.users.deepak.objects.date.instances"} (1.1840ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.date documents=[{"name"=>"testing123"}] flags=[] (0.5598ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.date documents=[{"name"=>"blah blah"}] flags=[] (0.2339ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.deepak.objects.date documents=[{"name"=>"foobar"}] flags=[] (0.4711ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.7020ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.4878ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.5388ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=helloworld documents=[{"name"=>"testing123"}] flags=[] (0.7215ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (3.2918ms)
+  MOPED: 127.0.0.1:27018 COMMAND      database=admin command={:ismaster=>1} (3.7858ms)
+  MOPED: 127.0.0.1:27019 COMMAND      database=admin command={:ismaster=>1} (3.3548ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"type"=>"object", "name"=>"bathroom", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}]}] flags=[] (4.9350ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.7876ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8a9e3b41f0c18a7000001", "name"=>"bathroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}], "project"=>nil}] flags=[] (1.2982ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.3351ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8abe1b41f0c18a7000002", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0209ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8abf1b41f0c18a7000003", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.7460ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8acefb41f0c18a7000004", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50e8abf1b41f0c18a7000003"}], "project"=>nil}] flags=[] (1.4184ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.3263ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (46.3431ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>{:name=>"business"}} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (4.4286ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (2.1060ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.7850ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.8196ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.7ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[35m (66.7ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4164ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7722ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5867ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.8ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 05 Jan 2013 23:04:59 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 05 Jan 2013 23:04:59 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8b19bb41f0c1953000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.6758ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (72.2723ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8b19bb41f0c1953000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50e8b19bb41f0c1953000001"}], "project"=>nil}] flags=[] (0.3672ms)

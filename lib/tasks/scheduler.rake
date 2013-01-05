@@ -105,6 +105,34 @@ task :test_data => :environment do
 
 end
 
+task :mongo_test => :environment do
+
+  User.destroy_all
+  ObjectDef.destroy_all
+
+  u = User.new(:username => "deepak")
+  u.save
+
+  # Create a business object document.
+  b = [{"name" => "name", "type" => "string"}, {"name" => "address", "type" => "string"}]                                           
+  u.create_object_document("business", b)
+
+  id = ObjectDef.find_by(name: "business").id
+
+  # Create a restroom object document.
+  r = [{"name" => "name", "type" => "string"}, {"name" => "location", "type" => "string"}, {"name" => "business", "type" => "objectRef", "objectId" => id}]
+  u.create_object_document("restroom", r)
+
+  {
+   "type" => "instance",
+   "user" => "deepak"
+   "object" => "business",
+   "value" => {"name" => "McDonalds",
+               "address" => "123 Happy Meal St"}
+  }
+
+end
+
 desc "TBD"
 task :update_matches => :environment do
   puts "Update Matches!"

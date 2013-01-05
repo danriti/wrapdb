@@ -32,6 +32,8 @@ gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 
 gem 'mongoid'
 
+gem 'moped'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
