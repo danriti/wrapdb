@@ -9191,3 +9191,199 @@ Connecting to database specified by database.yml
   MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8b19bb41f0c1953000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.6758ms)
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (72.2723ms)
   MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8b19bb41f0c1953000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50e8b19bb41f0c1953000001"}], "project"=>nil}] flags=[] (0.3672ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.8505ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.8067ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.7271ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[35m (23.0ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9458ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3376ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4926ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50e8b19bb41f0c1953000001"} flags=[:remove_first] (0.5312ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50e8b19bb41f0c1953000002"} flags=[:remove_first] (0.2396ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 05 Jan 2013 23:29:19 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 05 Jan 2013 23:29:19 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8b74fb41f0c49ce000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.5155ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5333ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8b74fb41f0c49ce000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50e8b74fb41f0c49ce000001"}], "project"=>nil}] flags=[] (0.3836ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4659ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50e8b74fb41f0c49ce000003", "type"=>"instance", "user"=>"deepak", "object"=>"50e8b74fb41f0c49ce000001", "value"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (1.4606ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6099ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50e8b74fb41f0c49ce000004", "type"=>"instance", "user"=>"deepak", "object"=>"50e8b74fb41f0c49ce000001", "value"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2494ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4725ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50e8b74fb41f0c49ce000005", "type"=>"instance", "user"=>"deepak", "object"=>"50e8b74fb41f0c49ce000001", "value"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2325ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4271ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1983ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.8175ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak"}} (1.5078ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.7092ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5252ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.4055ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5075ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak", "fields"=>["value"]}} (1.5831ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak", "fields"=>"value"}} (1.2703ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak"}} (1.2486ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.5352ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.5519ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1418ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.3392ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>0} (2.2852ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>0} (1.4403ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (70.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (10.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121117195008)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar(255), "uid" varchar(255), "name" varchar(255), "image" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195008')
+  [1m[36m (10.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProjects (20121117195012)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.6ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195012')
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEndpoints (20121117195017)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "endpoints" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "project_id" integer, "dictionary_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.6ms)[0m  [1mCREATE INDEX "index_endpoints_on_project_id" ON "endpoints" ("project_id")[0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_info('index_endpoints_on_project_id')[0m
+  [1m[35m (0.4ms)[0m  CREATE INDEX "index_endpoints_on_dictionary_id" ON "endpoints" ("dictionary_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195017')[0m
+  [1m[35m (13.7ms)[0m  commit transaction
+Migrating to CreateDictionaries (20121117195021)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "dictionaries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195021')[0m
+  [1m[35m (12.8ms)[0m  commit transaction
+Migrating to CreateErrays (20121117195025)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "errays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195025')[0m
+  [1m[35m (5.4ms)[0m  commit transaction
+Migrating to CreateItems (20121117195030)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "keytype" varchar(255), "value" varchar(255), "dictionary_id" integer, "erray_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_items_on_dictionary_id" ON "items" ("dictionary_id")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_dictionary_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_items_on_erray_id" ON "items" ("erray_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121117195030')
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTuples (20121117195034)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "tuples" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(255), "dictionary_id" integer, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_dictionary_id" ON "tuples" ("dictionary_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_tuples_on_item_id" ON "tuples" ("item_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121117195034')[0m
+  [1m[35m (5.9ms)[0m  commit transaction
+Migrating to AddBlueprintIndexToItems (20121118001201)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "items" ADD "blueprint_id" integer
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("items")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.3ms)[0m  CREATE INDEX "index_items_on_blueprint_id" ON "items" ("blueprint_id")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121118001201')[0m
+  [1m[35m (7.3ms)[0m  commit transaction
+Migrating to RemoveDictionaryIndexFromEndpoints (20121118040625)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040625')
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddItemIndexToEndpoints (20121118040853)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "endpoints" ADD "item_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("endpoints")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_endpoints_on_item_id" ON "endpoints" ("item_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118040853')
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddErrayIndexToTuples (20121118060206)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "tuples" ADD "erray_id" integer[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_item_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_dictionary_id')
+  [1m[36m (0.3ms)[0m  [1mCREATE INDEX "index_tuples_on_erray_id" ON "tuples" ("erray_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121118060206')
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddUsernameToUser (20130105202738)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "username" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130105202738')
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("dictionaries")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("endpoints")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_endpoints_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_endpoints_on_project_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("errays")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("items")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_blueprint_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_items_on_erray_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_items_on_dictionary_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("projects")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_projects_on_user_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tuples")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_erray_id')[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_tuples_on_item_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_tuples_on_dictionary_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0033ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3886ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2401ms)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (8.9ms)[0m  [1mINSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 06 Jan 2013 00:26:31 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sun, 06 Jan 2013 00:26:31 UTC +00:00], ["username", "deepak"]]
+  [1m[35m (58.4ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8c4b8b41f0cd46f000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (3.3360ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (40.3705ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50e8c4b8b41f0cd46f000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50e8c4b8b41f0cd46f000001"}], "project"=>nil}] flags=[] (0.2851ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (23.1285ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50e8c4b8b41f0cd46f000003", "type"=>"instance", "user"=>"deepak", "object"=>"50e8c4b8b41f0cd46f000001", "value"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.9475ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6106ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50e8c4b8b41f0cd46f000004", "type"=>"instance", "user"=>"deepak", "object"=>"50e8c4b8b41f0cd46f000001", "value"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2398ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4573ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50e8c4b8b41f0cd46f000005", "type"=>"instance", "user"=>"deepak", "object"=>"50e8c4b8b41f0cd46f000001", "value"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2275ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields={"value"=>1} (0.4160ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.5589ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.3576ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.4853ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.4641ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.7135ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1086ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2221ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.2791ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1940ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.1952ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.4629ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (81.0490ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak"}} (2.0030ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.2305ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.1484ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak"}} (1.2732ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.5824ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.6255ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.5023ms)

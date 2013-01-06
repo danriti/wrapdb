@@ -26,6 +26,18 @@ class User < ActiveRecord::Base
     obj.save
   end
 
+  def create_instance_document(objectName, instanceValue)
+    id = ObjectDef.find_by(name: objectName, user: username).id
+
+    if id != nil
+      instance = Instance.new(:type => "instance",
+                              :user => username,
+                              :object => id,
+                              :value => instanceValue)
+      instance.save
+    end
+  end
+
   def echo_test
     puts "Hello world!"
   end

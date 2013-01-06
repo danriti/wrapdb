@@ -123,13 +123,28 @@ task :mongo_test => :environment do
   r = [{"name" => "name", "type" => "string"}, {"name" => "location", "type" => "string"}, {"name" => "business", "type" => "objectRef", "objectId" => id}]
   u.create_object_document("restroom", r)
 
-  {
-   "type" => "instance",
-   "user" => "deepak"
-   "object" => "business",
-   "value" => {"name" => "McDonalds",
-               "address" => "123 Happy Meal St"}
-  }
+  # Example instance data!
+  #   {
+  #    "type" => "instance",
+  #    "user" => "deepak"
+  #    "object" => "business",
+  #    "value" => {"name" => "McDonalds",
+  #                "address" => "123 Happy Meal St"}
+  #   }
+
+  # Create first business instance.
+  b1 = {"name" => "McDonalds", "address" => "123 Happy Meal St"}
+  u.create_instance_document("business", b1)
+
+  # Create second business instance.
+  b1 = {"name" => "CVS", "address" => "123 Pharmacy St"}
+  u.create_instance_document("business", b1)
+
+  # Create third business instance.
+  b1 = {"name" => "Pizza Joint", "address" => "123 Pepperoni St"}
+  u.create_instance_document("business", b1)
+
+  i = Instance.where(user: "deepak").only("value").first
 
 end
 
