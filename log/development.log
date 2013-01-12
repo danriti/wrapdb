@@ -9387,3 +9387,996 @@ Connecting to database specified by database.yml
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.5824ms)
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.6255ms)
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (1.5023ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[35m (30.7ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (3.1412ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7663ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (2.3766ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50e8c4b8b41f0cd46f000001"} flags=[:remove_first] (2.7049ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50e8c4b8b41f0cd46f000002"} flags=[:remove_first] (2.1918ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:21:43 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:21:43 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f18d97b41f0cc9fd000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.6874ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (3.8927ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f18d97b41f0cc9fd000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f18d97b41f0cc9fd000001"}], "project"=>nil}] flags=[] (1.7617ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2605ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18d97b41f0cc9fd000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f18d97b41f0cc9fd000001", "value"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (1.8165ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5934ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18d97b41f0cc9fd000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f18d97b41f0cc9fd000001", "value"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.6065ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1644ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18d97b41f0cc9fd000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f18d97b41f0cc9fd000001", "value"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.6564ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields={"value"=>1} (1.6747ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[35m (67.0ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.0704ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.8202ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1606ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f18d97b41f0cc9fd000001"} flags=[:remove_first] (0.7787ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f18d97b41f0cc9fd000002"} flags=[:remove_first] (0.5872ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8562ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.5485ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50e8c4b8b41f0cd46f000003"} flags=[:remove_first] (1.4279ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50e8c4b8b41f0cd46f000004"} flags=[:remove_first] (0.6816ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50e8c4b8b41f0cd46f000005"} flags=[:remove_first] (0.5677ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18d97b41f0cc9fd000003"} flags=[:remove_first] (0.6163ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18d97b41f0cc9fd000004"} flags=[:remove_first] (0.5445ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18d97b41f0cc9fd000005"} flags=[:remove_first] (0.7262ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:23:20 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:23:20 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.0ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f18df8b41f0ccf28000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0018ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3468ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f18df8b41f0ccf28000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "value"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f18df8b41f0ccf28000001"}], "project"=>nil}] flags=[] (0.8678ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2710ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18df8b41f0ccf28000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f18df8b41f0ccf28000001", "value"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7634ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2934ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18df8b41f0ccf28000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f18df8b41f0ccf28000001", "value"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.9100ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (2.6889ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18df8b41f0ccf28000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f18df8b41f0ccf28000001", "value"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.6626ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields={"value"=>1} (0.4327ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (3.3944ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak"}} (1.0839ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields={"value"=>1} (1.4288ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields={"value"=>1} (45.9998ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields={"value"=>1} (1.7889ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[35m (105.0ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.3992ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7691ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.4973ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f18df8b41f0ccf28000001"} flags=[:remove_first] (1.0827ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f18df8b41f0ccf28000002"} flags=[:remove_first] (0.7310ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8864ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.0686ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18df8b41f0ccf28000003"} flags=[:remove_first] (0.7761ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18df8b41f0ccf28000004"} flags=[:remove_first] (0.6149ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18df8b41f0ccf28000005"} flags=[:remove_first] (0.6475ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:31:38 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:31:38 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (14.7ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f18feab41f0c35e3000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0240ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3249ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f18feab41f0c35e3000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f18feab41f0c35e3000001"}], "project"=>nil}] flags=[] (0.8378ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1318ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18feab41f0c35e3000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f18feab41f0c35e3000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7389ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3442ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18feab41f0c35e3000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f18feab41f0c35e3000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.5791ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2109ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f18feab41f0c35e3000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f18feab41f0c35e3000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.5965ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields={"data"=>1} (1.0252ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.7626ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8469ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak"}} (1.4853ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.6809ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.4107ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{"user"=>"deepak", "object"=>"50f18feab41f0c35e3000001"}} (1.7738ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (26.9606ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.8454ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f18feab41f0c35e3000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1406ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.6177ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f18feab41f0c35e3000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2164ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5574ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f18feab41f0c35e3000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1628ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9975ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5302ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f18feab41f0c35e3000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6938ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5707ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f18feab41f0c35e3000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2167ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  [1m[35m (69.6ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (8.0185ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.8574ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.3011ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f18feab41f0c35e3000001"} flags=[:remove_first] (0.8757ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f18feab41f0c35e3000002"} flags=[:remove_first] (0.7424ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8531ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.0695ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18feab41f0c35e3000003"} flags=[:remove_first] (0.8593ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18feab41f0c35e3000004"} flags=[:remove_first] (0.6125ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f18feab41f0c35e3000005"} flags=[:remove_first] (0.6814ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:45:32 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:45:32 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.8ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1932cb41f0c7ac7000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4637ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5579ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1932cb41f0c7ac7000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1932cb41f0c7ac7000001"}], "project"=>nil}] flags=[] (0.2983ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4442ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1932cb41f0c7ac7000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1932cb41f0c7ac7000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.2863ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5269ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1932cb41f0c7ac7000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1932cb41f0c7ac7000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2446ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4387ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1932cb41f0c7ac7000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1932cb41f0c7ac7000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2277ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4511ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1932cb41f0c7ac7000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4771ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  [1m[35m (69.9ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.6608ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.8612ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2155ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1932cb41f0c7ac7000001"} flags=[:remove_first] (0.8397ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1932cb41f0c7ac7000002"} flags=[:remove_first] (0.7069ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8454ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1072ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1932cb41f0c7ac7000003"} flags=[:remove_first] (0.7150ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1932cb41f0c7ac7000004"} flags=[:remove_first] (0.6492ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1932cb41f0c7ac7000005"} flags=[:remove_first] (0.5558ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:48:21 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:48:21 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f193d6b41f0c291e000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4337ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5867ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f193d6b41f0c291e000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f193d6b41f0c291e000001"}], "project"=>nil}] flags=[] (0.3235ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4544ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f193d6b41f0c291e000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f193d6b41f0c291e000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3028ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5429ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f193d6b41f0c291e000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f193d6b41f0c291e000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2394ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5028ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f193d6b41f0c291e000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f193d6b41f0c291e000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2332ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4599ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f193d6b41f0c291e000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4585ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 6]]
+  [1m[35m (62.3ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4996ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7355ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2014ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f193d6b41f0c291e000001"} flags=[:remove_first] (0.7930ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f193d6b41f0c291e000002"} flags=[:remove_first] (0.6430ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8166ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.0619ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f193d6b41f0c291e000003"} flags=[:remove_first] (0.7966ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f193d6b41f0c291e000004"} flags=[:remove_first] (0.6645ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f193d6b41f0c291e000005"} flags=[:remove_first] (0.6759ms)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:48:35 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:48:35 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (15.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f193e3b41f0c9f81000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4854ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5648ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f193e3b41f0c9f81000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f193e3b41f0c9f81000001"}], "project"=>nil}] flags=[] (0.3011ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4361ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f193e3b41f0c9f81000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f193e3b41f0c9f81000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3145ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5243ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f193e3b41f0c9f81000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f193e3b41f0c9f81000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2286ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4508ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f193e3b41f0c9f81000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f193e3b41f0c9f81000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2465ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4942ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f193e3b41f0c9f81000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5667ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4450ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (41.8792ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f193e3b41f0c9f81000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6275ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5225ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f193e3b41f0c9f81000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2043ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 7]]
+  [1m[35m (67.4ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.4553ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3245ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4745ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f193e3b41f0c9f81000001"} flags=[:remove_first] (0.3586ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f193e3b41f0c9f81000002"} flags=[:remove_first] (0.2542ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3524ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4060ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f193e3b41f0c9f81000003"} flags=[:remove_first] (0.3355ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f193e3b41f0c9f81000004"} flags=[:remove_first] (0.3908ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f193e3b41f0c9f81000005"} flags=[:remove_first] (0.2892ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.5ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 16:54:07 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 16:54:07 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.7ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1952fb41f0c065a000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9899ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3411ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1952fb41f0c065a000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1952fb41f0c065a000001"}], "project"=>nil}] flags=[] (0.8450ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2848ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1952fb41f0c065a000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1952fb41f0c065a000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.6917ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3680ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1952fb41f0c065a000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1952fb41f0c065a000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.5796ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1425ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1952fb41f0c065a000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1952fb41f0c065a000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.5603ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1625ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1952fb41f0c065a000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1544ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.5ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 8]]
+  [1m[35m (20.9ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9987ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3037ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4680ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1952fb41f0c065a000001"} flags=[:remove_first] (0.3526ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1952fb41f0c065a000002"} flags=[:remove_first] (0.2501ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3366ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4194ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1952fb41f0c065a000003"} flags=[:remove_first] (0.2952ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1952fb41f0c065a000004"} flags=[:remove_first] (0.2360ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1952fb41f0c065a000005"} flags=[:remove_first] (0.2482ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:02:53 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:02:53 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (14.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1973db41f0c28af000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9990ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3399ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1973db41f0c28af000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1973db41f0c28af000001"}], "project"=>nil}] flags=[] (0.8180ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1575ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1973db41f0c28af000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1973db41f0c28af000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7482ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3800ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1973db41f0c28af000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1973db41f0c28af000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.6971ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2169ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1973db41f0c28af000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1973db41f0c28af000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.6304ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1318ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1973db41f0c28af000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1494ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.5640ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2994ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1973db41f0c28af000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6433ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5883ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1973db41f0c28af000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2674ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 9]]
+  [1m[35m (65.7ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1053ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2854ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.9370ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1973db41f0c28af000001"} flags=[:remove_first] (1.9913ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1973db41f0c28af000002"} flags=[:remove_first] (0.7038ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.9189ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.0529ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1973db41f0c28af000003"} flags=[:remove_first] (0.9589ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1973db41f0c28af000004"} flags=[:remove_first] (0.5772ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1973db41f0c28af000005"} flags=[:remove_first] (0.6011ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:04:22 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:04:22 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19797b41f0c2570000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.2975ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3313ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19797b41f0c2570000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19797b41f0c2570000001"}], "project"=>nil}] flags=[] (0.3080ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4427ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19797b41f0c2570000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f19797b41f0c2570000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3488ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (6.5262ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19797b41f0c2570000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f19797b41f0c2570000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.1802ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5798ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19797b41f0c2570000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f19797b41f0c2570000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.1688ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4847ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19797b41f0c2570000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4365ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4807ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19797b41f0c2570000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f19797b41f0c2570000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>"50f19797b41f0c2570000003"}}] flags=[] (0.1647ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4556ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19797b41f0c2570000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3333ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 10]]
+  [1m[35m (21.4ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0214ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3016ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5193ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19797b41f0c2570000001"} flags=[:remove_first] (0.3514ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19797b41f0c2570000002"} flags=[:remove_first] (0.2372ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3269ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4811ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19797b41f0c2570000003"} flags=[:remove_first] (0.3259ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19797b41f0c2570000004"} flags=[:remove_first] (0.2337ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19797b41f0c2570000005"} flags=[:remove_first] (0.2234ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19797b41f0c2570000006"} flags=[:remove_first] (0.2432ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:15:52 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:15:52 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19a48b41f0ca2e6000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4213ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5558ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19a48b41f0ca2e6000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19a48b41f0ca2e6000001"}], "project"=>nil}] flags=[] (0.3493ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5016ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 11]]
+  [1m[35m (23.0ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0791ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3026ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4351ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19a48b41f0ca2e6000001"} flags=[:remove_first] (0.3314ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19a48b41f0ca2e6000002"} flags=[:remove_first] (0.2272ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3088ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2110ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:16:50 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:16:50 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19a82b41f0ca03f000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4170ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5524ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19a82b41f0ca03f000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19a82b41f0ca03f000001"}], "project"=>nil}] flags=[] (0.3002ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4377ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 12]]
+  [1m[35m (67.6ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.5661ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7715ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1437ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19a82b41f0ca03f000001"} flags=[:remove_first] (0.7994ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19a82b41f0ca03f000002"} flags=[:remove_first] (0.6173ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.7682ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.6113ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:17:16 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:17:16 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19a9cb41f0c3c84000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4096ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5624ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19a9cb41f0c3c84000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19a9cb41f0c3c84000001"}], "project"=>nil}] flags=[] (0.3033ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4420ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 13]]
+  [1m[35m (66.6ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.3320ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7389ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2121ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19a9cb41f0c3c84000001"} flags=[:remove_first] (1.0171ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19a9cb41f0c3c84000002"} flags=[:remove_first] (0.6328ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (4.1156ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.6134ms)
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:18:29 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:18:29 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (14.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19ae5b41f0c8ead000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0493ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0273ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19ae5b41f0c8ead000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19ae5b41f0c8ead000001"}], "project"=>nil}] flags=[] (0.3090ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4611ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19ae5b41f0c8ead000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f19ae5b41f0c8ead000001", "data"=>{"name"=>nil, "address"=>nil}}] flags=[] (0.3333ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5589ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19ae5b41f0c8ead000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f19ae5b41f0c8ead000001", "data"=>{"name"=>nil, "address"=>nil}}] flags=[] (0.2956ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5314ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19ae5b41f0c8ead000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f19ae5b41f0c8ead000001", "data"=>{"name"=>nil, "address"=>nil}}] flags=[] (0.2742ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4659ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19ae5b41f0c8ead000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4511ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4897ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19ae5b41f0c8ead000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f19ae5b41f0c8ead000002", "data"=>{"name"=>nil, "location"=>nil}}] flags=[] (0.2320ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4883ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19ae5b41f0c8ead000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3488ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 14]]
+  [1m[35m (62.8ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9875ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2942ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5279ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19ae5b41f0c8ead000001"} flags=[:remove_first] (0.1600ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19ae5b41f0c8ead000002"} flags=[:remove_first] (0.0932ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.6280ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5219ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19ae5b41f0c8ead000003"} flags=[:remove_first] (0.2835ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19ae5b41f0c8ead000004"} flags=[:remove_first] (0.2582ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19ae5b41f0c8ead000005"} flags=[:remove_first] (0.2201ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19ae5b41f0c8ead000006"} flags=[:remove_first] (0.2227ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:18:56 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:18:56 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (11.7ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19b00b41f0c4816000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4013ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5567ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19b00b41f0c4816000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19b00b41f0c4816000001"}], "project"=>nil}] flags=[] (0.3049ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4456ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b00b41f0c4816000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b00b41f0c4816000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3452ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.7937ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b00b41f0c4816000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b00b41f0c4816000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2656ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4032ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b00b41f0c4816000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b00b41f0c4816000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2270ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4323ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19b00b41f0c4816000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4311ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4749ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b00b41f0c4816000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b00b41f0c4816000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor"}}] flags=[] (0.2470ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4563ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19b00b41f0c4816000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3293ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 15]]
+  [1m[35m (69.1ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4793ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7124ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1640ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19b00b41f0c4816000001"} flags=[:remove_first] (0.7513ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19b00b41f0c4816000002"} flags=[:remove_first] (0.5729ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8295ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1616ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b00b41f0c4816000003"} flags=[:remove_first] (0.6948ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b00b41f0c4816000004"} flags=[:remove_first] (0.5953ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b00b41f0c4816000005"} flags=[:remove_first] (0.6211ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b00b41f0c4816000006"} flags=[:remove_first] (0.7362ms)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:20:36 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:20:36 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (15.4ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19b64b41f0c9347000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4766ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5538ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f19b64b41f0c9347000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f19b64b41f0c9347000001"}], "project"=>nil}] flags=[] (0.3264ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5071ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b64b41f0c9347000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b64b41f0c9347000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.2894ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5014ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b64b41f0c9347000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b64b41f0c9347000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2589ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.7060ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b64b41f0c9347000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b64b41f0c9347000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2465ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4799ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19b64b41f0c9347000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4506ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4792ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f19b64b41f0c9347000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f19b64b41f0c9347000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f19b64b41f0c9347000003"}}}] flags=[] (0.2594ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4632ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f19b64b41f0c9347000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3481ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0874ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5603ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.2392ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5452ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f19b64b41f0c9347000001", "user"=>"blah"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6094ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f19b64b41f0c9347000001", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.5602ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 16]]
+  [1m[35m (70.2ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.2573ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7756ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2343ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19b64b41f0c9347000001"} flags=[:remove_first] (1.0076ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f19b64b41f0c9347000002"} flags=[:remove_first] (0.7029ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8554ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2584ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b64b41f0c9347000003"} flags=[:remove_first] (1.4174ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b64b41f0c9347000004"} flags=[:remove_first] (0.6754ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b64b41f0c9347000005"} flags=[:remove_first] (0.6764ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f19b64b41f0c9347000006"} flags=[:remove_first] (0.6473ms)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:58:16 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:58:16 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (15.0ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a438b41f0c8219000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0214ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3487ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a438b41f0c8219000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a438b41f0c8219000001"}], "project"=>nil}] flags=[] (0.8702ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1954ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a438b41f0c8219000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a438b41f0c8219000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7565ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2963ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a438b41f0c8219000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a438b41f0c8219000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.6387ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2197ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a438b41f0c8219000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a438b41f0c8219000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.5848ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1871ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a438b41f0c8219000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2059ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1835ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a438b41f0c8219000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a438b41f0c8219000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a438b41f0c8219000003"}}}] flags=[] (0.6416ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1973ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a438b41f0c8219000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.9246ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.6ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 17]]
+  [1m[35m (21.7ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0812ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3090ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4842ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a438b41f0c8219000001"} flags=[:remove_first] (0.3247ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a438b41f0c8219000002"} flags=[:remove_first] (0.2496ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3338ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4945ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a438b41f0c8219000003"} flags=[:remove_first] (0.2823ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a438b41f0c8219000004"} flags=[:remove_first] (0.2861ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a438b41f0c8219000005"} flags=[:remove_first] (0.2332ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a438b41f0c8219000006"} flags=[:remove_first] (0.2306ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 17:59:12 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 17:59:12 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a470b41f0c4c4d000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4411ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5612ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a470b41f0c4c4d000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a470b41f0c4c4d000001"}], "project"=>nil}] flags=[] (0.3228ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4778ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a470b41f0c4c4d000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a470b41f0c4c4d000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.2971ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5159ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a470b41f0c4c4d000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a470b41f0c4c4d000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2515ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4811ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a470b41f0c4c4d000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a470b41f0c4c4d000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2377ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4683ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a470b41f0c4c4d000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5183ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5515ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a470b41f0c4c4d000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a470b41f0c4c4d000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a470b41f0c4c4d000003"}}}] flags=[] (0.2482ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4711ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a470b41f0c4c4d000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3567ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 18]]
+  [1m[35m (69.3ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8356ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7737ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1604ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a470b41f0c4c4d000001"} flags=[:remove_first] (1.0841ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a470b41f0c4c4d000002"} flags=[:remove_first] (0.7541ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8638ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2624ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a470b41f0c4c4d000003"} flags=[:remove_first] (0.8738ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a470b41f0c4c4d000004"} flags=[:remove_first] (0.6585ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a470b41f0c4c4d000005"} flags=[:remove_first] (0.6711ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a470b41f0c4c4d000006"} flags=[:remove_first] (0.5641ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:01:18 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:01:18 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (19.4ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a4eeb41f0c4c19000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0931ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3065ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a4eeb41f0c4c19000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a4eeb41f0c4c19000001"}], "project"=>nil}] flags=[] (0.7601ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0493ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a4eeb41f0c4c19000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a4eeb41f0c4c19000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.8013ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3096ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a4eeb41f0c4c19000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a4eeb41f0c4c19000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.5474ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0297ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a4eeb41f0c4c19000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a4eeb41f0c4c19000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.5574ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.9885ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a4eeb41f0c4c19000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.9830ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2517ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a4eeb41f0c4c19000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a4eeb41f0c4c19000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a4eeb41f0c4c19000003"}}}] flags=[] (0.6928ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2221ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a4eeb41f0c4c19000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.7682ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a4eeb41f0c4c19000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0209ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a4eeb41f0c4c19000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1246ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 19]]
+  [1m[35m (60.8ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.3117ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7875ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2641ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a4eeb41f0c4c19000001"} flags=[:remove_first] (1.4355ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a4eeb41f0c4c19000002"} flags=[:remove_first] (0.7267ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8705ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2765ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a4eeb41f0c4c19000003"} flags=[:remove_first] (0.7138ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a4eeb41f0c4c19000004"} flags=[:remove_first] (3.4461ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a4eeb41f0c4c19000005"} flags=[:remove_first] (0.2778ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a4eeb41f0c4c19000006"} flags=[:remove_first] (0.2837ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:01:36 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:01:36 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a500b41f0c6473000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9456ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2155ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a500b41f0c6473000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a500b41f0c6473000001"}], "project"=>nil}] flags=[] (0.8447ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0791ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a500b41f0c6473000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a500b41f0c6473000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.6382ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1561ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a500b41f0c6473000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a500b41f0c6473000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.5732ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0598ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a500b41f0c6473000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a500b41f0c6473000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.5138ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1013ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a500b41f0c6473000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.0464ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0993ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a500b41f0c6473000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a500b41f0c6473000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a500b41f0c6473000003"}}}] flags=[] (0.5732ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1060ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a500b41f0c6473000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.8750ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a500b41f0c6473000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.7153ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a500b41f0c6473000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0929ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 20]]
+  [1m[35m (67.6ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.4526ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7699ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2348ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a500b41f0c6473000001"} flags=[:remove_first] (0.9663ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a500b41f0c6473000002"} flags=[:remove_first] (0.6371ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8869ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2317ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a500b41f0c6473000003"} flags=[:remove_first] (0.7913ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a500b41f0c6473000004"} flags=[:remove_first] (0.6900ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a500b41f0c6473000005"} flags=[:remove_first] (0.5436ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a500b41f0c6473000006"} flags=[:remove_first] (0.6528ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:02:37 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:02:37 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a53db41f0cf711000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4842ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5739ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a53db41f0cf711000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a53db41f0cf711000001"}], "project"=>nil}] flags=[] (0.3161ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4599ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a53db41f0cf711000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a53db41f0cf711000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3033ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5400ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a53db41f0cf711000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a53db41f0cf711000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2346ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4666ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a53db41f0cf711000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a53db41f0cf711000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2284ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4551ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a53db41f0cf711000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4928ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4544ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a53db41f0cf711000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a53db41f0cf711000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a53db41f0cf711000003"}}}] flags=[] (0.2513ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4597ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a53db41f0cf711000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3467ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a53db41f0cf711000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3188ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a53db41f0cf711000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4528ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 21]]
+  [1m[35m (67.3ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.5966ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7718ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2333ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a53db41f0cf711000001"} flags=[:remove_first] (0.8919ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a53db41f0cf711000002"} flags=[:remove_first] (0.6018ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1675ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2921ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2367ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2944ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4737ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a53db41f0cf711000003"} flags=[:remove_first] (0.3278ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a53db41f0cf711000004"} flags=[:remove_first] (0.2379ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a53db41f0cf711000005"} flags=[:remove_first] (0.2320ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a53db41f0cf711000006"} flags=[:remove_first] (0.2539ms)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (12.6ms)[0m  [1mINSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Sat, 12 Jan 2013 18:07:42 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:07:42 UTC +00:00], ["username", "deepak"]]
+  [1m[35m (74.2ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a66eb41f0c2e41000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.6192ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5593ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a66eb41f0c2e41000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a66eb41f0c2e41000001"}], "project"=>nil}] flags=[] (0.3750ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4778ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a66eb41f0c2e41000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a66eb41f0c2e41000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.4199ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5205ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a66eb41f0c2e41000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a66eb41f0c2e41000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2460ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5193ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a66eb41f0c2e41000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a66eb41f0c2e41000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2403ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4735ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a66eb41f0c2e41000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4582ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4642ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a66eb41f0c2e41000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a66eb41f0c2e41000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a66eb41f0c2e41000003"}}}] flags=[] (0.2615ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4697ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a66eb41f0c2e41000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3562ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a66eb41f0c2e41000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3271ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a66eb41f0c2e41000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4523ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a66eb41f0c2e41000003"}}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0965ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 22]]
+  [1m[35m (23.7ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0476ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2911ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4930ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a66eb41f0c2e41000001"} flags=[:remove_first] (0.3231ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a66eb41f0c2e41000002"} flags=[:remove_first] (0.2940ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3443ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4718ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a66eb41f0c2e41000003"} flags=[:remove_first] (0.2799ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a66eb41f0c2e41000004"} flags=[:remove_first] (0.2356ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a66eb41f0c2e41000005"} flags=[:remove_first] (0.2284ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a66eb41f0c2e41000006"} flags=[:remove_first] (0.2248ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:08:28 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:08:28 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a69cb41f0cf7e3000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.4442ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5426ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a69cb41f0cf7e3000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a69cb41f0cf7e3000001"}], "project"=>nil}] flags=[] (0.3269ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4389ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a69cb41f0cf7e3000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a69cb41f0cf7e3000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3347ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5436ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a69cb41f0cf7e3000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a69cb41f0cf7e3000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2182ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3908ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a69cb41f0cf7e3000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a69cb41f0cf7e3000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2377ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4387ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a69cb41f0cf7e3000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4408ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3958ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a69cb41f0cf7e3000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a69cb41f0cf7e3000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a69cb41f0cf7e3000003"}}}] flags=[] (0.2282ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4530ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a69cb41f0cf7e3000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3576ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a69cb41f0cf7e3000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3226ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a69cb41f0cf7e3000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4668ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>nil}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3057ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 23]]
+  [1m[35m (57.1ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9165ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3071ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4485ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a69cb41f0cf7e3000001"} flags=[:remove_first] (0.3624ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a69cb41f0cf7e3000002"} flags=[:remove_first] (0.2356ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3183ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4892ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a69cb41f0cf7e3000003"} flags=[:remove_first] (0.2792ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a69cb41f0cf7e3000004"} flags=[:remove_first] (0.6390ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a69cb41f0cf7e3000005"} flags=[:remove_first] (0.6175ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a69cb41f0cf7e3000006"} flags=[:remove_first] (0.6249ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:08:47 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:08:47 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6afb41f0c9540000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9859ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3928ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6afb41f0c9540000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a6afb41f0c9540000001"}], "project"=>nil}] flags=[] (0.8874ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1508ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6afb41f0c9540000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6afb41f0c9540000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7975ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2825ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6afb41f0c9540000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6afb41f0c9540000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.6969ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6607ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6afb41f0c9540000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6afb41f0c9540000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2401ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4292ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6afb41f0c9540000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4332ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4508ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6afb41f0c9540000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6afb41f0c9540000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a6afb41f0c9540000003"}}}] flags=[] (0.2570ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4487ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6afb41f0c9540000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3533ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a6afb41f0c9540000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3192ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a6afb41f0c9540000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4475ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>nil}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.2978ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 24]]
+  [1m[35m (64.2ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.1296ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7544ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2686ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6afb41f0c9540000001"} flags=[:remove_first] (0.8259ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6afb41f0c9540000002"} flags=[:remove_first] (0.6418ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.8776ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2629ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6afb41f0c9540000003"} flags=[:remove_first] (0.7439ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6afb41f0c9540000004"} flags=[:remove_first] (0.6430ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6afb41f0c9540000005"} flags=[:remove_first] (0.7572ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6afb41f0c9540000006"} flags=[:remove_first] (0.6273ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:09:12 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:09:12 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (17.5ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6c8b41f0ccd18000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.0450ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.4071ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6c8b41f0ccd18000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a6c8b41f0ccd18000001"}], "project"=>nil}] flags=[] (0.8059ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1988ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6c8b41f0ccd18000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6c8b41f0ccd18000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7429ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3940ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6c8b41f0ccd18000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6c8b41f0ccd18000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.5887ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1497ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6c8b41f0ccd18000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6c8b41f0ccd18000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.6104ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1644ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6c8b41f0ccd18000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4432ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4442ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6c8b41f0ccd18000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6c8b41f0ccd18000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a6c8b41f0ccd18000003"}}}] flags=[] (0.3037ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4861ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6c8b41f0ccd18000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3846ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a6c8b41f0ccd18000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3250ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a6c8b41f0ccd18000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4683ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a6c8b41f0ccd18000003"}}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3431ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 25]]
+  [1m[35m (67.7ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.1083ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.7913ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1337ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6c8b41f0ccd18000001"} flags=[:remove_first] (0.7820ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6c8b41f0ccd18000002"} flags=[:remove_first] (0.5770ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.7770ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.3039ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6c8b41f0ccd18000003"} flags=[:remove_first] (0.7708ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6c8b41f0ccd18000004"} flags=[:remove_first] (0.5860ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6c8b41f0ccd18000005"} flags=[:remove_first] (0.6051ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6c8b41f0ccd18000006"} flags=[:remove_first] (0.6838ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.5ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:09:46 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:09:46 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.5ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6eab41f0c6ee2000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9668ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1795ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6eab41f0c6ee2000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a6eab41f0c6ee2000001"}], "project"=>nil}] flags=[] (0.7143ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1003ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6eab41f0c6ee2000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6eab41f0c6ee2000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7236ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1606ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6eab41f0c6ee2000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6eab41f0c6ee2000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.6177ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0536ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6eab41f0c6ee2000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6eab41f0c6ee2000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.5441ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.9990ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6eab41f0c6ee2000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.9937ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1740ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6eab41f0c6ee2000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6eab41f0c6ee2000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a6eab41f0c6ee2000003"}}}] flags=[] (0.5517ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2329ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6eab41f0c6ee2000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.8872ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a6eab41f0c6ee2000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.8421ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a6eab41f0c6ee2000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.0388ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>nil}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.7443ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 26]]
+  [1m[35m (56.3ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9186ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2961ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4900ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6eab41f0c6ee2000001"} flags=[:remove_first] (0.4745ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6eab41f0c6ee2000002"} flags=[:remove_first] (0.2422ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3326ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5023ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6eab41f0c6ee2000003"} flags=[:remove_first] (0.3064ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6eab41f0c6ee2000004"} flags=[:remove_first] (0.2377ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6eab41f0c6ee2000005"} flags=[:remove_first] (0.2418ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6eab41f0c6ee2000006"} flags=[:remove_first] (1.7736ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:10:04 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:10:04 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.9ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6fcb41f0cccb6000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (1.1744ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.4112ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a6fcb41f0cccb6000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a6fcb41f0cccb6000001"}], "project"=>nil}] flags=[] (0.8397ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2603ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6fcb41f0cccb6000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6fcb41f0cccb6000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.7696ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.4679ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6fcb41f0cccb6000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6fcb41f0cccb6000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.5889ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3769ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6fcb41f0cccb6000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6fcb41f0cccb6000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.6223ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1997ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6fcb41f0cccb6000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1761ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3998ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a6fcb41f0cccb6000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a6fcb41f0cccb6000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a6fcb41f0cccb6000003"}}}] flags=[] (0.5469ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.2176ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a6fcb41f0cccb6000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.8705ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a6fcb41f0cccb6000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.8533ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a6fcb41f0cccb6000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.3115ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a6fcb41f0cccb6000003"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1973ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a6fcb41f0cccb6000001", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.1389ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 27]]
+  [1m[35m (68.4ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0362ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2997ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4520ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6fcb41f0cccb6000001"} flags=[:remove_first] (0.8533ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a6fcb41f0cccb6000002"} flags=[:remove_first] (0.6599ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (1.0703ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.3392ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6fcb41f0cccb6000003"} flags=[:remove_first] (0.7350ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6fcb41f0cccb6000004"} flags=[:remove_first] (0.6063ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6fcb41f0cccb6000005"} flags=[:remove_first] (0.6132ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a6fcb41f0cccb6000006"} flags=[:remove_first] (0.5662ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.5ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:10:44 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:10:44 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (18.6ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a724b41f0cb87f000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9928ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5965ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a724b41f0cb87f000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a724b41f0cb87f000001"}], "project"=>nil}] flags=[] (0.3099ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4427ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a724b41f0cb87f000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a724b41f0cb87f000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.2909ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5236ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a724b41f0cb87f000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a724b41f0cb87f000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2391ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4921ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a724b41f0cb87f000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a724b41f0cb87f000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2348ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.7085ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a724b41f0cb87f000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (2.1300ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4947ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a724b41f0cb87f000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a724b41f0cb87f000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a724b41f0cb87f000003"}}}] flags=[] (0.2773ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4714ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a724b41f0cb87f000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3462ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a724b41f0cb87f000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3200ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a724b41f0cb87f000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4461ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a724b41f0cb87f000003"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3057ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a724b41f0cb87f000001", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4196ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (7.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 28]]
+  [1m[35m (66.2ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0693ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2816ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4702ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a724b41f0cb87f000001"} flags=[:remove_first] (0.3428ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a724b41f0cb87f000002"} flags=[:remove_first] (0.2608ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3755ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5050ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a724b41f0cb87f000003"} flags=[:remove_first] (0.3669ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a724b41f0cb87f000004"} flags=[:remove_first] (0.2491ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a724b41f0cb87f000005"} flags=[:remove_first] (0.2320ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a724b41f0cb87f000006"} flags=[:remove_first] (0.2499ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:12:10 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:12:10 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a77ab41f0c4f2f000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.3130ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.7114ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a77ab41f0c4f2f000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a77ab41f0c4f2f000001"}], "project"=>nil}] flags=[] (0.2675ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5753ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a77ab41f0c4f2f000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a77ab41f0c4f2f000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3183ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5312ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a77ab41f0c4f2f000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a77ab41f0c4f2f000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2577ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4749ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a77ab41f0c4f2f000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a77ab41f0c4f2f000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2344ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5140ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a77ab41f0c4f2f000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4699ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4888ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a77ab41f0c4f2f000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a77ab41f0c4f2f000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a77ab41f0c4f2f000003"}}}] flags=[] (0.3066ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5310ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a77ab41f0c4f2f000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4189ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a77ab41f0c4f2f000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4005ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a77ab41f0c4f2f000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5116ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a77ab41f0c4f2f000003"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3753ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a77ab41f0c4f2f000001", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5076ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.3825ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a77ab41f0c4f2f000003"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.9880ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a77ab41f0c4f2f000001", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.9262ms)
+Connecting to database specified by database.yml
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 29]]
+  [1m[35m (65.9ms)[0m  commit transaction
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0579ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2894ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.1604ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a77ab41f0c4f2f000001"} flags=[:remove_first] (0.8132ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50f1a77ab41f0c4f2f000002"} flags=[:remove_first] (0.5627ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.9248ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (1.2774ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a77ab41f0c4f2f000003"} flags=[:remove_first] (0.7985ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a77ab41f0c4f2f000004"} flags=[:remove_first] (0.6218ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a77ab41f0c4f2f000005"} flags=[:remove_first] (0.5939ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50f1a77ab41f0c4f2f000006"} flags=[:remove_first] (0.5524ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "users" ("created_at", "image", "name", "provider", "uid", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 12 Jan 2013 18:15:46 UTC +00:00], ["image", nil], ["name", nil], ["provider", nil], ["uid", nil], ["updated_at", Sat, 12 Jan 2013 18:15:46 UTC +00:00], ["username", "deepak"]]
+  [1m[36m (12.3ms)[0m  [1mcommit transaction[0m
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a852b41f0cf8b2000001", "name"=>"business", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"address", "type"=>"string"}], "project"=>nil}] flags=[] (0.9649ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (1.4112ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"50f1a852b41f0cf8b2000002", "name"=>"restroom", "type"=>"object", "user"=>"deepak", "data"=>[{"name"=>"name", "type"=>"string"}, {"name"=>"location", "type"=>"string"}, {"name"=>"business", "type"=>"objectRef", "objectId"=>"50f1a852b41f0cf8b2000001"}], "project"=>nil}] flags=[] (0.3152ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4520ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a852b41f0cf8b2000003", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a852b41f0cf8b2000001", "data"=>{"name"=>"McDonalds", "address"=>"123 Happy Meal St"}}] flags=[] (0.3102ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5372ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a852b41f0cf8b2000004", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a852b41f0cf8b2000001", "data"=>{"name"=>"CVS", "address"=>"123 Pharmacy St"}}] flags=[] (0.2351ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4478ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a852b41f0cf8b2000005", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a852b41f0cf8b2000001", "data"=>{"name"=>"Pizza Joint", "address"=>"123 Pepperoni St"}}] flags=[] (0.2260ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"business", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4296ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a852b41f0cf8b2000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.4346ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4539ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.instances documents=[{"_id"=>"50f1a852b41f0cf8b2000006", "type"=>"instance", "user"=>"deepak", "object"=>"50f1a852b41f0cf8b2000002", "data"=>{"name"=>"JWU Can", "location"=>"2nd Floor", "business"=>{"$ref"=>"easyAPI.users.instances", "$id"=>"50f1a852b41f0cf8b2000003"}}}] flags=[] (0.2511ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"name"=>"restroom", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4556ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"user"=>"deepak", "object"=>"50f1a852b41f0cf8b2000002"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3462ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a852b41f0cf8b2000006"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3226ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a852b41f0cf8b2000002", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4532ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50f1a852b41f0cf8b2000003"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3021ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50f1a852b41f0cf8b2000001", "user"=>"deepak"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4210ms)

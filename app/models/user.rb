@@ -7,35 +7,61 @@ class User < ActiveRecord::Base
 
   has_many :projects
 
-  def create_object_document(objectName, objectValue)
-    #session = Moped::Session.new(["127.0.0.1:27017", "127.0.0.1:27018", "127.0.0.1:27019" ])
-    #session.use :easy_api_development
-
-    ## db.easyAPI.users.objects insert a new document!
-    #userObjects = session[OBJECT_PATH]
-    #userObjects.insert({"type" => "object",
-    #                    "name" => objectName,
-    #                    "user" => username,
-    #                    "value" => objectValue})
-
+  def create_object_document(objectName, objectData)
     obj = ObjectDef.new(:name => objectName,
                         :type => "object",
                         :user => username,
-                        :value => objectValue,
+                        :data => objectData,
                         :project => nil)
     obj.save
   end
 
-  def create_instance_document(objectName, instanceValue)
-    id = ObjectDef.find_by(name: objectName, user: username).id
+  def process_instance_data(objectDef, instanceData)
+    instance = Hash.new
+
+    objectDef.data.each do |data|
+      if data["type"] == "objectRef"
+        instance.store(data["name"], {"$ref" => INSTANCE_PATH,
+                                      "$id" => instanceData[data["name"]]})
+      else
+        instance.store(data["name"], instanceData[data["name"]])
+      end
+    end
+
+    instance
+  end
+
+  def create_instance_document(objectName, instanceData)
+    objectDef = ObjectDef.find_by(name: objectName, user: username)
+    id = objectDef.id
+
+    instanceData = process_instance_data(objectDef, instanceData)
 
     if id != nil
       instance = Instance.new(:type => "instance",
                               :user => username,
                               :object => id,
-                              :value => instanceValue)
+                              :data => instanceData)
       instance.save
     end
+  end
+
+  def get_instance_by_object_name(objectName)
+    id = ObjectDef.find_by(name: objectName, user: username).id
+
+    outputArray = []
+
+    if id != nil
+      instances = Instance.where(user: username, object: id)
+
+      instances.each do |i|
+        outputArray.push({"id" => i.id,
+                          "data" => i.data})
+      end
+    end
+
+    # Return array of data hashes
+    outputArray
   end
 
   def echo_test

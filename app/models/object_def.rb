@@ -3,7 +3,7 @@ class ObjectDef
   field :name, type: String
   field :type, type: String
   field :user, type: String
-  field :value, type: Array
+  field :data, type: Array
   field :project, type: String
   store_in collection: "easyAPI.users.objects"
 end

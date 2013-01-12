@@ -109,18 +109,22 @@ task :mongo_test => :environment do
 
   User.destroy_all
   ObjectDef.destroy_all
+  Instance.destroy_all
 
   u = User.new(:username => "deepak")
   u.save
 
   # Create a business object document.
-  b = [{"name" => "name", "type" => "string"}, {"name" => "address", "type" => "string"}]                                           
+  b = [{"name" => "name", "type" => "string"}, 
+       {"name" => "address", "type" => "string"}]                                           
   u.create_object_document("business", b)
 
   id = ObjectDef.find_by(name: "business").id
 
   # Create a restroom object document.
-  r = [{"name" => "name", "type" => "string"}, {"name" => "location", "type" => "string"}, {"name" => "business", "type" => "objectRef", "objectId" => id}]
+  r = [{"name" => "name", "type" => "string"}, 
+       {"name" => "location", "type" => "string"}, 
+       {"name" => "business", "type" => "objectRef", "objectId" => id}]
   u.create_object_document("restroom", r)
 
   # Example instance data!
@@ -144,7 +148,20 @@ task :mongo_test => :environment do
   b1 = {"name" => "Pizza Joint", "address" => "123 Pepperoni St"}
   u.create_instance_document("business", b1)
 
-  i = Instance.where(user: "deepak").only("value").first
+  # Find the business you want to use!
+  mcdonalds = u.get_instance_by_object_name("business")[0]
+
+  # Create a restroom instance and reference a business! DUN DUN DUN!
+  r = {"name" => "JWU Can",
+       "location" => "2nd Floor",
+       "business" => mcdonalds["id"]}
+  u.create_instance_document("restroom", r)
+
+  instanceArray = u.get_instance_by_object_name("restroom")
+
+  instance = Instance.find_by(id: instanceArray[0]["id"])
+  
+  puts instance.render_instance("deepak")
 
 end
 
