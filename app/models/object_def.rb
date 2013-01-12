@@ -12,11 +12,11 @@ class ObjectDef
 
   # Generate a new object definition.
   def self.generate(objectDefName, objectDefData, username)
-    obj = ObjectDef.new(:name => objectDefName,
-                        :type => "object",
-                        :username => username,
-                        :data => objectDefData)
-    obj.save
+    obj = ObjectDef.create!(:name => objectDefName,
+                            :type => "object",
+                            :username => username,
+                            :data => objectDefData)
+    return obj
   end
 
   # Destroy object definition by name.

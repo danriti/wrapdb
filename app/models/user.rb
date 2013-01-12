@@ -1,8 +1,11 @@
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
 
-  attr_accessible :image, :name, :provider, :uid, :username
-
+  field :username, type: String
   has_many :projects
+  has_many :object_defs
+
+  store_in collection: "easyAPI.users"
 
   #-----------------------------------------------------------------------------
   # Instance methods
@@ -19,20 +22,11 @@ class User < ActiveRecord::Base
   end
 
   # TBD
-  def create_instance_document(objectDefName, instanceData)
-    objectDef = ObjectDef.find_by(name: objectDefName, username: self.username)
-    id = objectDef.id
-
-    instanceData = objectDef.normalize_instance(instanceData)
-
-    if id != nil
-      instance = Instance.new(:type => "instance",
-                              :username => self.username,
-                              :objectDefId => id,
-                              :data => instanceData,
-                              :project => nil)
-      return instance.save
-    end
+  def create_instance_document(objectDefName, instanceData, projectName)
+    return Instance.generate(self.username, 
+                             objectDefName, 
+                             instanceData, 
+                             projectName)
   end
 
   # TBD

@@ -12,6 +12,23 @@ class Instance
   #-----------------------------------------------------------------------------
 
   # TBD
+  def self.generate(username, objectDefName, instanceData, projectName)
+    objectDef = ObjectDef.find_by(name: objectDefName, username: username)
+    id = objectDef.id
+
+    instanceData = objectDef.normalize_instance(instanceData)
+
+    if id != nil
+      instance = Instance.create!(:type => "instance",
+                                  :username => username,
+                                  :objectDefId => id,
+                                  :data => instanceData,
+                                  :projectName => projectName)
+      return instance
+    end
+  end
+
+  # TBD
   def self.get_all_by_name(objectDefName, username)
     id = ObjectDef.find_by(name: objectDefName, username: username).id
 

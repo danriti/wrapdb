@@ -143,15 +143,15 @@ task :mongo_test => :environment do
 
   # Create first business instance.
   b1 = {"name" => "McDonalds", "address" => "123 Happy Meal St"}
-  u.create_instance_document("business", b1)
+  u.create_instance_document("business", b1, "")
 
   # Create second business instance.
   b1 = {"name" => "CVS", "address" => "123 Pharmacy St"}
-  u.create_instance_document("business", b1)
+  u.create_instance_document("business", b1, "")
 
   # Create third business instance.
   b1 = {"name" => "Pizza Joint", "address" => "123 Pepperoni St"}
-  u.create_instance_document("business", b1)
+  u.create_instance_document("business", b1, "")
 
   # Find the business you want to use!
   mcdonalds = u.get_instances_by_object_name("business")[0]
@@ -160,7 +160,7 @@ task :mongo_test => :environment do
   r = {"name" => "JWU Can",
        "location" => "2nd Floor",
        "business" => mcdonalds["id"]}
-  u.create_instance_document("restroom", r)
+  u.create_instance_document("restroom", r, "")
 
   # Grab all instances of the restroom.
   instanceArray = u.get_instances_by_object_name("restroom")
