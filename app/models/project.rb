@@ -17,7 +17,7 @@ class Project
   end 
 
   # TBD
-  def self.destoy_by_name
+  def self.destroy_by_name
     nil
   end 
 
