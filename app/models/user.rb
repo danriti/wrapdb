@@ -1,69 +1,46 @@
 class User < ActiveRecord::Base
 
-  OBJECT_PATH = "easyAPI.users.objects"
-  INSTANCE_PATH = "easyAPI.users.instances"  
-
   attr_accessible :image, :name, :provider, :uid, :username
 
   has_many :projects
 
-  def create_object_document(objectName, objectData)
-    obj = ObjectDef.new(:name => objectName,
-                        :type => "object",
-                        :user => username,
-                        :data => objectData,
-                        :project => nil)
-    obj.save
+  #-----------------------------------------------------------------------------
+  # Instance methods
+  #-----------------------------------------------------------------------------
+
+  # TBD
+  def create_object_definition(objectDefName, objectDefData)
+    return ObjectDef.generate(objectDefName, objectDefData, self.username)
   end
 
-  def process_instance_data(objectDef, instanceData)
-    instance = Hash.new
-
-    objectDef.data.each do |data|
-      if data["type"] == "objectRef"
-        instance.store(data["name"], {"$ref" => INSTANCE_PATH,
-                                      "$id" => instanceData[data["name"]]})
-      else
-        instance.store(data["name"], instanceData[data["name"]])
-      end
-    end
-
-    instance
+  # TBD
+  def destroy_object_definition(objectDefName)
+    return ObjectDef.destroy_by_name(objectDefName, self.username)
   end
 
-  def create_instance_document(objectName, instanceData)
-    objectDef = ObjectDef.find_by(name: objectName, user: username)
+  # TBD
+  def create_instance_document(objectDefName, instanceData)
+    objectDef = ObjectDef.find_by(name: objectDefName, username: self.username)
     id = objectDef.id
 
-    instanceData = process_instance_data(objectDef, instanceData)
+    instanceData = objectDef.normalize_instance(instanceData)
 
     if id != nil
       instance = Instance.new(:type => "instance",
-                              :user => username,
-                              :object => id,
-                              :data => instanceData)
-      instance.save
+                              :username => self.username,
+                              :objectDefId => id,
+                              :data => instanceData,
+                              :project => nil)
+      return instance.save
     end
   end
 
-  def get_instance_by_object_name(objectName)
-    id = ObjectDef.find_by(name: objectName, user: username).id
-
-    outputArray = []
-
-    if id != nil
-      instances = Instance.where(user: username, object: id)
-
-      instances.each do |i|
-        outputArray.push({"id" => i.id,
-                          "data" => i.data})
-      end
-    end
-
-    # Return array of data hashes
-    outputArray
+  # TBD
+  def get_instances_by_object_name(objectDefName)
+    return Instance.get_all_by_name(objectDefName, username)
   end
 
+  # TBD
   def echo_test
     puts "Hello world!"
   end

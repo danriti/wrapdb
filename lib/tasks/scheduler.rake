@@ -117,7 +117,7 @@ task :mongo_test => :environment do
   # Create a business object document.
   b = [{"name" => "name", "type" => "string"}, 
        {"name" => "address", "type" => "string"}]                                           
-  u.create_object_document("business", b)
+  u.create_object_definition("business", b)
 
   id = ObjectDef.find_by(name: "business").id
 
@@ -125,7 +125,12 @@ task :mongo_test => :environment do
   r = [{"name" => "name", "type" => "string"}, 
        {"name" => "location", "type" => "string"}, 
        {"name" => "business", "type" => "objectRef", "objectId" => id}]
-  u.create_object_document("restroom", r)
+  u.create_object_definition("restroom", r)
+
+  # Create a cat object document.
+  b = [{"name" => "name", "type" => "string"}, 
+       {"name" => "breed", "type" => "string"}]                                           
+  u.create_object_definition("cat", b)
 
   # Example instance data!
   #   {
@@ -149,7 +154,7 @@ task :mongo_test => :environment do
   u.create_instance_document("business", b1)
 
   # Find the business you want to use!
-  mcdonalds = u.get_instance_by_object_name("business")[0]
+  mcdonalds = u.get_instances_by_object_name("business")[0]
 
   # Create a restroom instance and reference a business! DUN DUN DUN!
   r = {"name" => "JWU Can",
@@ -157,12 +162,23 @@ task :mongo_test => :environment do
        "business" => mcdonalds["id"]}
   u.create_instance_document("restroom", r)
 
-  instanceArray = u.get_instance_by_object_name("restroom")
+  # Grab all instances of the restroom.
+  instanceArray = u.get_instances_by_object_name("restroom")
 
+  # Get the instance object.
   instance = Instance.find_by(id: instanceArray[0]["id"])
-  
+
+  # Print JSON with a reference to console!
   puts instance.render_instance("deepak")
 
+  # Test that business does NOT get destroyed because it contains instances.
+  puts u.destroy_object_definition("business") == false
+
+  # Test that cats does NOT get destroyed because it does not exist.
+  puts u.destroy_object_definition("cats") == false
+
+  # Test that cat DOES get destroyed because it contains no instances.
+  puts u.destroy_object_definition("cat") == true
 end
 
 desc "TBD"
