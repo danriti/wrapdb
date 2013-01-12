@@ -1,10 +1,12 @@
 class Instance
   include Mongoid::Document
+
   field :type, type: String
-  field :username, type: String
-  field :objectDefId, type: String
-  field :projectName, type: String
   field :data, type: Hash
+
+  belongs_to :object_def
+  belongs_to :project
+
   store_in collection: "easyAPI.users.instances"
 
   #-----------------------------------------------------------------------------
@@ -12,35 +14,33 @@ class Instance
   #-----------------------------------------------------------------------------
 
   # TBD
-  def self.generate(username, objectDefName, instanceData, projectName)
-    objectDef = ObjectDef.find_by(name: objectDefName, username: username)
-    id = objectDef.id
+  def self.generate(objectDef, instanceData, project)
+    if objectDef == nil or project == nil
+      return nil
+    end
 
     instanceData = objectDef.normalize_instance(instanceData)
 
-    if id != nil
-      instance = Instance.create!(:type => "instance",
-                                  :username => username,
-                                  :objectDefId => id,
-                                  :data => instanceData,
-                                  :projectName => projectName)
-      return instance
-    end
+    instance = Instance.create!(:type => "instance",
+                                :object_def => objectDef,
+                                :data => instanceData,
+                                :project => project)
+    return instance
   end
 
   # TBD
-  def self.get_all_by_name(objectDefName, username)
-    id = ObjectDef.find_by(name: objectDefName, username: username).id
+  def self.get_all_by_name(objectDef, project)
+    if objectDef == nil 
+      return nil
+    end
 
     outputArray = []
 
-    if id != nil
-      instances = self.where(username: username, objectDefId: id)
+    instances = self.where(object_def: objectDef, project: project)
 
-      instances.each do |i|
-        outputArray.push({"id" => i.id,
-                          "data" => i.data})
-      end
+    instances.each do |i|
+      outputArray.push({"id" => i.id,
+                        "data" => i.data})
     end
 
     return outputArray
@@ -51,24 +51,31 @@ class Instance
   #-----------------------------------------------------------------------------
 
   # TBD
-  def dereference(id, username)
+  def dereference(id, level)
+    if level > MAX_DEREFERENCE_NESTING_LEVEL
+      return {"error" => "max nesting level"}
+    end
+
     i = Instance.find_by(id: id)
-  
-    return i.render_instance(username)
+    return i.render_instance(level)
   end
 
   # TBD
-  def render_instance(username)
-    objectDef = ObjectDef.find_by(id: self.objectDefId, username: username)
+  def render_instance(level=0)
+    if self.object_def == nil
+      return nil
+    end
 
     returnHash = Hash.new
 
-    objectDef.data.each do |objectDefData|
+    self.object_def.data.each do |objectDefData|
       if objectDefData["type"] == "objectRef"
         dbRef = self.data[objectDefData["name"]]
-        returnHash.store(objectDefData["name"], dereference(dbRef["$id"], username))
+        returnHash.store(objectDefData["name"], 
+                         dereference(dbRef["$id"], level+1))
       else
-        returnHash.store(objectDefData["name"], self.data[objectDefData["name"]])
+        returnHash.store(objectDefData["name"], 
+                         self.data[objectDefData["name"]])
       end
     end
 

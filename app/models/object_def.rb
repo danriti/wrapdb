@@ -1,9 +1,13 @@
 class ObjectDef
   include Mongoid::Document
+
   field :name, type: String
   field :type, type: String
-  field :username, type: String
   field :data, type: Array
+
+  belongs_to :user
+  has_many :instances
+
   store_in collection: "easyAPI.users.objects"
 
   #-----------------------------------------------------------------------------
@@ -11,23 +15,23 @@ class ObjectDef
   #-----------------------------------------------------------------------------
 
   # Generate a new object definition.
-  def self.generate(objectDefName, objectDefData, username)
+  def self.generate(objectDefName, objectDefData, user)
     obj = ObjectDef.create!(:name => objectDefName,
                             :type => "object",
-                            :username => username,
+                            :user => user,
                             :data => objectDefData)
     return obj
   end
 
   # Destroy object definition by name.
-  def self.destroy_by_name(objectDefName, username)
-    objectDef = ObjectDef.where(name: objectDefName).first
+  def self.destroy_by_name(objectDefName, user)
+    objectDef = ObjectDef.where(name: objectDefName, user: user).first
 
     # If the object definition exists and there are no instances associated with
     # the object definition, destroy the object destory.
     if objectDef != nil and 
-       not Instance.where(objectDefId: objectDef.id, username: username).exists?
-      ObjectDef.where(name: objectDefName, username: username).destroy
+       not Instance.where(object_def: objectDef).exists?
+      objectDef.destroy
       return true
     else
       return false

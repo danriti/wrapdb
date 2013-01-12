@@ -13,25 +13,17 @@ class User
 
   # TBD
   def create_object_definition(objectDefName, objectDefData)
-    return ObjectDef.generate(objectDefName, objectDefData, self.username)
+    return ObjectDef.generate(objectDefName, objectDefData, self)
   end
 
   # TBD
   def destroy_object_definition(objectDefName)
-    return ObjectDef.destroy_by_name(objectDefName, self.username)
+    return ObjectDef.destroy_by_name(objectDefName, self)
   end
 
   # TBD
-  def create_instance_document(objectDefName, instanceData, projectName)
-    return Instance.generate(self.username, 
-                             objectDefName, 
-                             instanceData, 
-                             projectName)
-  end
-
-  # TBD
-  def get_instances_by_object_name(objectDefName)
-    return Instance.get_all_by_name(objectDefName, username)
+  def create_project(name)
+    return Project.generate(name, self)
   end
 
   # TBD

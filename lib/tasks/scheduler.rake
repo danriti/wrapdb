@@ -110,9 +110,15 @@ task :mongo_test => :environment do
   User.destroy_all
   ObjectDef.destroy_all
   Instance.destroy_all
+  Project.destroy_all
 
   u = User.new(:username => "deepak")
   u.save
+  puts u.username == "deepak"
+
+  # Create a project.
+  p = u.create_project("Krapp!")
+  puts p.name == "Krapp!"
 
   # Create a business object document.
   b = [{"name" => "name", "type" => "string"}, 
@@ -143,33 +149,33 @@ task :mongo_test => :environment do
 
   # Create first business instance.
   b1 = {"name" => "McDonalds", "address" => "123 Happy Meal St"}
-  u.create_instance_document("business", b1, "")
+  p.create_instance_document("business", b1)
 
   # Create second business instance.
   b1 = {"name" => "CVS", "address" => "123 Pharmacy St"}
-  u.create_instance_document("business", b1, "")
+  p.create_instance_document("business", b1)
 
   # Create third business instance.
   b1 = {"name" => "Pizza Joint", "address" => "123 Pepperoni St"}
-  u.create_instance_document("business", b1, "")
+  p.create_instance_document("business", b1)
 
   # Find the business you want to use!
-  mcdonalds = u.get_instances_by_object_name("business")[0]
+  mcdonalds = p.get_instances_by_object_name("business")[0]
 
   # Create a restroom instance and reference a business! DUN DUN DUN!
   r = {"name" => "JWU Can",
        "location" => "2nd Floor",
        "business" => mcdonalds["id"]}
-  u.create_instance_document("restroom", r, "")
+  p.create_instance_document("restroom", r)
 
   # Grab all instances of the restroom.
-  instanceArray = u.get_instances_by_object_name("restroom")
+  instanceArray = p.get_instances_by_object_name("restroom")
 
   # Get the instance object.
   instance = Instance.find_by(id: instanceArray[0]["id"])
 
   # Print JSON with a reference to console!
-  puts instance.render_instance("deepak")
+  puts instance.render_instance
 
   # Test that business does NOT get destroyed because it contains instances.
   puts u.destroy_object_definition("business") == false
