@@ -128,8 +128,8 @@ task :mongo_test => :environment do
   puts u.api_key == "123Key"
 
   # Create a project.
-  p = u.create_project("Krapp!")
-  puts p.name == "Krapp!"
+  p = u.projects.first
+  puts p.name == "My Project"
 
   # Create a business object document.
   b = [{"name" => "name", "type" => "string"}, 

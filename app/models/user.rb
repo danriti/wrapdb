@@ -12,10 +12,16 @@ class User
   store_in collection: "easyAPI.users"
 
   before_create :set_api_key
+  after_create :create_default_project
 
   #-----------------------------------------------------------------------------
   # Instance methods
   #-----------------------------------------------------------------------------
+
+  # TBD
+  def create_default_project
+    self.create_project("My Project")
+  end
 
   # TBD
   def set_api_key
