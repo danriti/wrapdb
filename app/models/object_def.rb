@@ -8,7 +8,7 @@ class ObjectDef
   belongs_to :user
   has_many :instances
 
-  store_in collection: "easyAPI.users.objects"
+  store_in collection: OBJECT_DEF_PATH
 
   #-----------------------------------------------------------------------------
   # Class methods

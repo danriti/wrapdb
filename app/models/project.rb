@@ -7,7 +7,7 @@ class Project
   has_many :endpoints
   has_many :instances
 
-  store_in collection: "easyAPI.users.projects"
+  store_in collection: PROJECT_PATH
 
   #-----------------------------------------------------------------------------
   # Class methods

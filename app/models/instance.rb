@@ -7,7 +7,7 @@ class Instance
   belongs_to :object_def
   belongs_to :project
 
-  store_in collection: "easyAPI.users.instances"
+  store_in collection: INSTANCE_PATH
 
   #-----------------------------------------------------------------------------
   # Class methods

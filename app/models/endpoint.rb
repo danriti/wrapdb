@@ -7,7 +7,7 @@ class Endpoint
 
   belongs_to :project
 
-  store_in collection: "easyAPI.users.endpoints"
+  store_in collection: ENDPOINT_PATH
 
   #-----------------------------------------------------------------------------
   # Class methods

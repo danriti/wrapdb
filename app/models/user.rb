@@ -9,7 +9,7 @@ class User
   has_many :projects
   has_many :object_defs
 
-  store_in collection: "easyAPI.users"
+  store_in collection: USER_PATH
 
   before_create :set_api_key
   after_create :create_default_project
