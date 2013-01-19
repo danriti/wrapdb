@@ -2,14 +2,25 @@ class User
   include Mongoid::Document
 
   field :username, type: String
+  field :email, type: String
+  field :session_token, type: String
+  field :api_key, type: String
+
   has_many :projects
   has_many :object_defs
 
   store_in collection: "easyAPI.users"
 
+  before_create :set_api_key
+
   #-----------------------------------------------------------------------------
   # Instance methods
   #-----------------------------------------------------------------------------
+
+  # TBD
+  def set_api_key
+    self.api_key = "123Key"
+  end
 
   # TBD
   def create_object_definition(objectDefName, objectDefData)

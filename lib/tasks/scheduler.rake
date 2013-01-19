@@ -105,6 +105,11 @@ task :test_data => :environment do
 
 end
 
+task :create_admin_user, [:username, :email] => [:environment] do |t, args|
+  u = User.create!(:username => args[:username],
+                   :email => args[:email])
+end
+
 task :mongo_test => :environment do
 
   User.destroy_all
@@ -112,9 +117,15 @@ task :mongo_test => :environment do
   Instance.destroy_all
   Project.destroy_all
 
-  u = User.new(:username => "deepak")
-  u.save
-  puts u.username == "deepak"
+  # Create an admin user!
+  Rake::Task['create_admin_user'].execute({:username => 'admin',
+                                           :email => 'dmriti@gmail.com'})
+
+  # Fetch the user and test it!
+  u = User.first
+  puts u.username == "admin"
+  puts u.email == "dmriti@gmail.com"
+  puts u.api_key == "123Key"
 
   # Create a project.
   p = u.create_project("Krapp!")
