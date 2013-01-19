@@ -110,6 +110,18 @@ task :create_admin_user, [:username, :email] => [:environment] do |t, args|
                    :email => args[:email])
 end
 
+task :destroy_environment => :environment do
+  User.destroy_all
+  ObjectDef.destroy_all
+  Instance.destroy_all
+  Project.destroy_all
+  Endpoint.destroy_all
+
+  Rake::Task['create_admin_user'].execute({:username => 'admin',
+                                           :email => 'admin@example.com'})
+
+end
+
 task :mongo_test => :environment do
 
   User.destroy_all

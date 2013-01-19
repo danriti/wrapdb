@@ -1,14 +1,13 @@
 class ProjectsController < ApplicationController
   # /projects/create
   def create 
-    user = User.where(:id => params[:userid]).first
+    user = User.where(:api_key => params[:api_key]).first
 
     if user != nil
-      project = Project.new(:name => params[:name])
-      project.user = user
-      project.save
+      project = user.create_project(params[:name])
 
-      render :json => { 'id' => project.id, 'status' => 'success' }, :callback => params[:callback]
+      render :json => { 'id' => project.id, 
+                        'status' => 'success' }, :callback => params[:callback]
     else
       render :json => { 'status' => 'fail' }, :callback => params[:callback]
     end

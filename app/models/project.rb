@@ -7,6 +7,8 @@ class Project
   has_many :endpoints
   has_many :instances
 
+  index({name: 1, user_id: 1}, {unique: true})
+
   store_in collection: PROJECT_PATH
 
   #-----------------------------------------------------------------------------

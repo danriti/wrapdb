@@ -130,10 +130,14 @@ class EndpointsController < ApplicationController
     end
   end
 
+  # /test
+  def test
+    render :json => {"status" => "success"}
+  end
 
   # /test/body
   # This tests the fetching of POST request parameters.
-  def test
+  def test_body
     blob = JSON.parse(params[:blob])
 
     d = Dictionary.create!

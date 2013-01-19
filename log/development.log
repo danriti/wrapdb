@@ -13404,3 +13404,466 @@ Connecting to database specified by database.yml
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50faf7a2b41f0c913c000004"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3421ms)
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={"$query"=>{"_id"=>"50faf7a3b41f0c913c000007"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3142ms)
   MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={"$query"=>{"_id"=>"50faf7a2b41f0c913c000003"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3097ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:06:11 -0500
+Connecting to database specified by database.yml
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:10:02 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:12:54 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:15:00 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:15:05 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:16:14 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:18:40 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:20:00 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:25:41 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:25:55 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:26:49 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:56:44 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 15:57:19 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5140ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.8993ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb08afb41f0c7398000001", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50faf7a2b41f0c913c000001"}] flags=[] (0.4928ms)
+Completed 200 OK in 84ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:57:19 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 15:57:56 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.3342ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5176ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb08d4b41f0c1a7c000002", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50faf7a2b41f0c913c000001"}] flags=[] (0.2275ms)
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2013-01-19 15:57:56 -0500
+Processing by EndpointsController#test as HTML
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0309ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.4911ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3138ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50faf7a2b41f0c913c000001"} flags=[:remove_first] (0.4783ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3986ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5918ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50faf7a2b41f0c913c000003"} flags=[:remove_first] (0.3257ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"50faf7a2b41f0c913c000004"} flags=[:remove_first] (0.2453ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3195ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5443ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50faf7a2b41f0c913c000006"} flags=[:remove_first] (2.7804ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50faf7a3b41f0c913c000007"} flags=[:remove_first] (0.1271ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50faf7a3b41f0c913c000008"} flags=[:remove_first] (0.0999ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50faf7a3b41f0c913c000009"} flags=[:remove_first] (0.1111ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.instances selector={"_id"=>"50faf7a3b41f0c913c00000a"} flags=[:remove_first] (0.0875ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.6380ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3622ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50faf7a2b41f0c913c000002"} flags=[:remove_first] (0.3424ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb08afb41f0c7398000001"} flags=[:remove_first] (0.2322ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb08d4b41f0c1a7c000002"} flags=[:remove_first] (0.2143ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3116ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3700ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.endpoints selector={"_id"=>"50faf7a3b41f0c913c00000b"} flags=[:remove_first] (0.2739ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0719ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.3123ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2487ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2582ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2129ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2747ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1991ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2911ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2029ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.2718ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1981ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0393ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.2866ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2401ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3483ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2143ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2599ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2079ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2575ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2074ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.2592ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2048ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb09bdb41f0cf92c000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.4478ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb09bdb41f0cf92c000002", "name"=>"My Project", "user_id"=>"50fb09bdb41f0cf92c000001"}] flags=[] (0.3591ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:03:25 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0040ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5097ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0a1eb41f0cb1f9000001", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50fb09bdb41f0cf92c000001"}] flags=[] (0.3080ms)
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:05:17 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8483ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4463ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0a8db41f0c13ed000002", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50fb09bdb41f0cf92c000001"}] flags=[] (0.2477ms)
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:05:17 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:06:22 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9112ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5016ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0aceb41f0c7fc5000003", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50fb09bdb41f0cf92c000001"}] flags=[] (0.3619ms)
+Completed 200 OK in 127ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:06:22 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:09:35 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1156ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5312ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0b8fb41f0c51ef000004", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50fb09bdb41f0cf92c000001"}] flags=[] (0.2592ms)
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:09:35 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:13:21 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.6608ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.8609ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0c71b41f0c7b55000005", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50fb09bdb41f0cf92c000001"}] flags=[] (0.2928ms)
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:13:21 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9727ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.3402ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2966ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50fb09bdb41f0cf92c000001"} flags=[:remove_first] (0.5693ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3862ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2217ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2735ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2105ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2639ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5238ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb09bdb41f0cf92c000002"} flags=[:remove_first] (0.4141ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0a1eb41f0cb1f9000001"} flags=[:remove_first] (0.2375ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0a8db41f0c13ed000002"} flags=[:remove_first] (0.2222ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0aceb41f0c7fc5000003"} flags=[:remove_first] (0.2265ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0b8fb41f0c51ef000004"} flags=[:remove_first] (0.2749ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0c71b41f0c7b55000005"} flags=[:remove_first] (0.2236ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3295ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2558ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb0c91b41f0c4f38000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.4277ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0c91b41f0c4f38000002", "name"=>"My Project", "user_id"=>"50fb0c91b41f0c4f38000001"}] flags=[] (0.3858ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:15:15 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1621ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5431ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0ce4b41f0cd161000001", "name"=>"{:name=>\"Krapp\"}", "user_id"=>"50fb0c91b41f0c4f38000001"}] flags=[] (0.3512ms)
+Completed 200 OK in 87ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:15:16 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9477ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.2921ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3011ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50fb0c91b41f0c4f38000001"} flags=[:remove_first] (0.3123ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3347ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2441ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2563ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2103ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2491ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2906ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0c91b41f0c4f38000002"} flags=[:remove_first] (0.2820ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0ce4b41f0cd161000001"} flags=[:remove_first] (0.2358ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3393ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2165ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb0d44b41f0c590f000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.3593ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0d44b41f0c590f000002", "name"=>"My Project", "user_id"=>"50fb0d44b41f0c590f000001"}] flags=[] (0.3009ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:17:01 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8600ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4587ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0d4eb41f0c06d5000001", "name"=>"Krapp", "user_id"=>"50fb0d44b41f0c590f000001"}] flags=[] (0.3121ms)
+Completed 200 OK in 78ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:17:02 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0576ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.3080ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3219ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50fb0d44b41f0c590f000001"} flags=[:remove_first] (0.3216ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3276ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2205ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.3109ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2089ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2635ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2904ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0d44b41f0c590f000002"} flags=[:remove_first] (0.2856ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0d4eb41f0c06d5000001"} flags=[:remove_first] (0.2322ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3150ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3259ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb0e05b41f0c1bd8000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.3397ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0e05b41f0c1bd8000002", "name"=>"My Project", "user_id"=>"50fb0e05b41f0c1bd8000001"}] flags=[] (0.2720ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:21:37 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0145ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5238ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0e62b41f0cefa5000001", "name"=>"Krapp", "user_id"=>"50fb0e05b41f0c1bd8000001"}] flags=[] (0.3052ms)
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:21:38 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8633ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4489ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0e62b41f0c1063000002", "name"=>"Krapp", "user_id"=>"50fb0e05b41f0c1bd8000001"}] flags=[] (0.2322ms)
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:21:38 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0674ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.2902ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3319ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50fb0e05b41f0c1bd8000001"} flags=[:remove_first] (0.3142ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.2849ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1898ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2258ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1824ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2213ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3476ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0e05b41f0c1bd8000002"} flags=[:remove_first] (0.3645ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0e62b41f0cefa5000001"} flags=[:remove_first] (0.2654ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0e62b41f0c1063000002"} flags=[:remove_first] (0.2301ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3221ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2871ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb0edfb41f0c7bf5000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.3188ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0edfb41f0c7bf5000002", "name"=>"My Project", "user_id"=>"50fb0edfb41f0c7bf5000001"}] flags=[] (0.2847ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:23:55 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0235ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4480ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0eebb41f0cdac3000001", "name"=>"Krapp", "user_id"=>"50fb0edfb41f0c7bf5000001"}] flags=[] (0.3693ms)
+Completed 200 OK in 78ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:23:55 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8025ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4368ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0eebb41f0c4216000002", "name"=>"Krapp", "user_id"=>"50fb0edfb41f0c7bf5000001"}] flags=[] (0.2320ms)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:23:55 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0641ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=system.indexes documents=[{:unique=>true, :name=>"name_index", :ns=>"easy_api_development.easyAPI.users.projects", :key=>{:name=>1, :user_id=>1}}] flags=[] (0.2415ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9539ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.3383ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3293ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50fb0edfb41f0c7bf5000001"} flags=[:remove_first] (0.3242ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3481ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2165ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2663ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2117ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2568ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3719ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0edfb41f0c7bf5000002"} flags=[:remove_first] (1.2007ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0eebb41f0cdac3000001"} flags=[:remove_first] (0.2818ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0eebb41f0c4216000002"} flags=[:remove_first] (0.2282ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3421ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2449ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb0f2fb41f0cc8cf000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.3178ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0f2fb41f0cc8cf000002", "name"=>"My Project", "user_id"=>"50fb0f2fb41f0cc8cf000001"}] flags=[] (0.2756ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9058ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=system.indexes documents=[{:unique=>true, :name=>"name_index", :ns=>"easy_api_development.easyAPI.users.projects", :key=>{:name=>1, :user_id=>1}}] flags=[] (0.2708ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:25:35 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0474ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4621ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0f50b41f0cf7c5000001", "name"=>"Krapp", "user_id"=>"50fb0f2fb41f0cc8cf000001"}] flags=[] (0.3314ms)
+Completed 200 OK in 98ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:25:36 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9663ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4804ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0f50b41f0ca81b000002", "name"=>"Krapp", "user_id"=>"50fb0f2fb41f0cc8cf000001"}] flags=[] (0.3450ms)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:25:36 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9809ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.3412ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3347ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"50fb0f2fb41f0cc8cf000001"} flags=[:remove_first] (0.3023ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.3214ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2089ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2704ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2012ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.2673ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3006ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0f2fb41f0cc8cf000002"} flags=[:remove_first] (0.2861ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0f50b41f0cf7c5000001"} flags=[:remove_first] (0.2346ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"50fb0f50b41f0ca81b000002"} flags=[:remove_first] (0.2463ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.3707ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1998ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"50fb0ff3b41f0cd3fe000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.3214ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb0ff3b41f0cd3fe000002", "name"=>"My Project", "user_id"=>"50fb0ff3b41f0cd3fe000001"}] flags=[] (0.3071ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9034ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=system.indexes documents=[{:unique=>true, :ns=>"easy_api_development.easyAPI.users.projects", :key=>{:name=>1, :user_id=>1}, :name=>"name_1_user_id_1"}] flags=[] (0.2363ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:28:38 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.2782ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.5565ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb1007b41f0c9bf2000001", "name"=>"Krapp", "user_id"=>"50fb0ff3b41f0cd3fe000001"}] flags=[] (0.3920ms)
+Completed 200 OK in 80ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:28:39 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8729ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4714ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb1007b41f0cfcb2000002", "name"=>"Krapp", "user_id"=>"50fb0ff3b41f0cd3fe000001"}] flags=[] (0.2663ms)
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:28:39 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-19 16:30:57 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0612ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4985ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"50fb1092b41f0c8338000001", "name"=>"Krapp", "user_id"=>"50fb0ff3b41f0cd3fe000001"}] flags=[] (0.3185ms)
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-19 16:30:58 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.0ms)
