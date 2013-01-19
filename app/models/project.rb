@@ -4,7 +4,7 @@ class Project
   field :name, type: String
 
   belongs_to :user
-  #has_many :endpoints
+  has_many :endpoints
   has_many :instances
 
   store_in collection: "easyAPI.users.projects"
@@ -25,6 +25,11 @@ class Project
   #-----------------------------------------------------------------------------
   # Instance methods
   #-----------------------------------------------------------------------------
+
+  # TBD
+  def create_endpoint(endpointName, endpointData)
+    return Endpoint.generate(endpointName, endpointData, self)
+  end
 
   # TBD
   def create_instance_document(objectDefName, instanceData)

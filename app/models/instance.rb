@@ -46,6 +46,21 @@ class Instance
     return outputArray
   end
 
+  # TBD
+  def self.render_all(objectDefId, project, selectionHash={})
+    returnArray = Array.new
+
+    instances = Instance.where(project: project, 
+                               object_def_id: objectDefId)
+
+    # Loop through each Mongoid instance and render!
+    instances.each do |instance|
+      returnArray.push(instance.render)
+    end
+        
+    return returnArray
+  end
+
   #-----------------------------------------------------------------------------
   # Instance methods
   #-----------------------------------------------------------------------------
@@ -57,11 +72,11 @@ class Instance
     end
 
     i = Instance.find_by(id: id)
-    return i.render_instance(level)
+    return i.render(level)
   end
 
   # TBD
-  def render_instance(level=0)
+  def render(level=0)
     if self.object_def == nil
       return nil
     end
