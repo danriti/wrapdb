@@ -1,4 +1,6 @@
 EasyApi::Application.routes.draw do
+  get "object_defs/create"
+
   #resources :projects
 
   root to: 'projects#index'
@@ -8,6 +10,8 @@ EasyApi::Application.routes.draw do
 
   match 'projects/create', to: 'projects#create'
   match 'projects/get', to: 'projects#get'
+
+  match ':username/objects/create', to: 'object_defs#create'
 
   match 'endpoints/create', to: 'endpoints#create'
   match 'endpoints/get', to: 'endpoints#get_endpoints'

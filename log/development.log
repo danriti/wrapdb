@@ -13867,3 +13867,296 @@ Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 20
 Processing by EndpointsController#test as HTML
   Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
 Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1079ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.2939ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5266ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8301ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8628ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (33.9541ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8878ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8687ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.7319ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (2.0502ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5450ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.9889ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.7622ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.9200ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.8916ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0810ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.6546ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.9321ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.9109ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.5039ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.7991ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9511ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.3371ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2010ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.1752ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1521ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.2167ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1552ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.1731ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1478ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.1841ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1447ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"51006c483b6467b7d9000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.1841ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"51006c483b6467b7d9000002", "name"=>"My Project", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.2167ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 18:56:16 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (33.4151ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.9420ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510078a03b64678c31000001", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1779ms)
+Completed 200 OK in 87ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 18:56:16 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1349ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4642ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"Bob"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.6108ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:31:34 -0500
+Connecting to database specified by database.yml
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (33.8700ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3982ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510080e63b6467aac3000001", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1740ms)
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:31:34 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 19:32:10 -0500
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.7102ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4008ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"5100810a3b6467bed0000002", "name"=>"business", "type"=>"object", "data"=>[], "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1280ms)
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:32:10 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.7229ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3891ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"5100810a3b64679aeb000003", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.0951ms)
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:32:10 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 19:40:10 -0500
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.5672ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3991ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"510082ea3b6467c664000004", "name"=>"business", "type"=>"object", "data"=>[], "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.0880ms)
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:40:10 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.6273ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3889ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510082ea3b646701ce000005", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.0761ms)
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:40:10 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:49:04 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.7291ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4232ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510085003b6467f381000006", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.2089ms)
+Completed 200 OK in 80ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:49:04 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 19:50:27 -0500
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"_json"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}], "api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin", "object_def"=>{}}
+WARNING: Can't verify CSRF token authenticity
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.6661ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3889ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"510085533b64675278000007", "name"=>"business", "type"=>"object", "data"=>[], "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1280ms)
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:50:27 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.6671ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3898ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510085533b646718cf000008", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.0761ms)
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:50:27 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 19:51:38 -0500
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"_json"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}], "api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin", "object_def"=>{}}
+WARNING: Can't verify CSRF token authenticity
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.7710ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3891ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"5100859a3b64674644000009", "name"=>"business", "type"=>"object", "data"=>[], "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1810ms)
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:51:38 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.7548ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4199ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"5100859a3b6467614700000a", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1690ms)
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:51:38 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 19:59:26 -0500
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}], "api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin", "object_def"=>{"data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}]}}
+WARNING: Can't verify CSRF token authenticity
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.5970ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3929ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"5100876e3b64672bb800000b", "name"=>"business", "type"=>"object", "data"=>[], "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1059ms)
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 19:59:26 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.6230ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3829ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"5100876e3b6467d8a400000c", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.0832ms)
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 19:59:26 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 20:00:57 -0500
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}], "api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin", "object_def"=>{"data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}]}}
+WARNING: Can't verify CSRF token authenticity
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.6363ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4010ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"510087c93b64674d0200000d", "name"=>"business", "type"=>"object", "data"=>[], "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.1822ms)
+Completed 200 OK in 74ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 20:00:58 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8211ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.4251ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510087ca3b646703e700000e", "name"=>"Krapp", "user_id"=>"51006c483b6467b7d9000001"}] flags=[] (0.2029ms)
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 20:00:58 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.8829ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users", :query=>{}} (0.2160ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2162ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users selector={"_id"=>"51006c483b6467b7d9000001"} flags=[:remove_first] (0.0880ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.objects", :query=>{}} (0.4411ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.objects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3107ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"5100810a3b6467bed0000002"} flags=[:remove_first] (0.0861ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"510082ea3b6467c664000004"} flags=[:remove_first] (0.0582ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"510085533b64675278000007"} flags=[:remove_first] (0.0851ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"5100859a3b64674644000009"} flags=[:remove_first] (0.0570ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"5100876e3b64672bb800000b"} flags=[:remove_first] (0.0629ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.objects selector={"_id"=>"510087c93b64674d0200000d"} flags=[:remove_first] (0.0629ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.instances", :query=>{}} (0.6692ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.instances selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.1688ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.projects", :query=>{}} (0.1740ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.projects selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.2630ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"51006c483b6467b7d9000002"} flags=[:remove_first] (0.1459ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"510078a03b64678c31000001"} flags=[:remove_first] (0.0551ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"510080e63b6467aac3000001"} flags=[:remove_first] (0.0572ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"5100810a3b64679aeb000003"} flags=[:remove_first] (0.0613ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"510082ea3b646701ce000005"} flags=[:remove_first] (0.0551ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"510085003b6467f381000006"} flags=[:remove_first] (0.0610ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"510085533b646718cf000008"} flags=[:remove_first] (0.0601ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"5100859a3b6467614700000a"} flags=[:remove_first] (0.0560ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"5100876e3b6467d8a400000c"} flags=[:remove_first] (0.0620ms)
+  MOPED: 127.0.0.1:27017 DELETE       database=easy_api_development collection=easyAPI.users.projects selector={"_id"=>"510087ca3b646703e700000e"} flags=[:remove_first] (0.0551ms)
+  MOPED: 127.0.0.1:27017 COMMAND      database=easy_api_development command={:count=>"easyAPI.users.endpoints", :query=>{}} (0.7212ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users.endpoints selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.3037ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users documents=[{"_id"=>"510087f13b6467b942000001", "username"=>"admin", "email"=>"admin@example.com", "api_key"=>"123Key"}] flags=[] (0.2148ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510087f13b6467b942000002", "name"=>"My Project", "user_id"=>"510087f13b6467b942000001"}] flags=[] (0.1149ms)
+
+
+Started POST "/admin/objects/create?api_key=123Key&session_token=123Session&name=business" for 127.0.0.1 at 2013-01-23 20:03:18 -0500
+Connecting to database specified by database.yml
+Processing by ObjectDefsController#create as HTML
+  Parameters: {"data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}], "api_key"=>"123Key", "session_token"=>"123Session", "name"=>"business", "username"=>"admin", "object_def"=>{"data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}]}}
+WARNING: Can't verify CSRF token authenticity
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (33.4539ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"username"=>"admin"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3972ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.objects documents=[{"_id"=>"510088573b6467c1df000001", "name"=>"business", "type"=>"object", "data"=>[{"type"=>"string", "name"=>"name"}, {"type"=>"string", "name"=>"address"}], "user_id"=>"510087f13b6467b942000001"}] flags=[] (0.2062ms)
+Completed 200 OK in 63ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects/create?api_key=123Key&session_token=123Session&name=Krapp" for 127.0.0.1 at 2013-01-23 20:03:19 -0500
+Processing by ProjectsController#create as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session", "name"=>"Krapp"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (0.9270ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=easy_api_development collection=easyAPI.users selector={"$query"=>{"api_key"=>"123Key"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.3872ms)
+  MOPED: 127.0.0.1:27017 INSERT       database=easy_api_development collection=easyAPI.users.projects documents=[{"_id"=>"510088573b64673098000002", "name"=>"Krapp", "user_id"=>"510087f13b6467b942000001"}] flags=[] (0.2298ms)
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test?api_key=123Key&session_token=123Session&" for 127.0.0.1 at 2013-01-23 20:03:19 -0500
+Processing by EndpointsController#test as HTML
+  Parameters: {"api_key"=>"123Key", "session_token"=>"123Session"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
