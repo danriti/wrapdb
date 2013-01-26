@@ -1,20 +1,17 @@
 class ObjectDefsController < ApplicationController
   def create
-    username = params[:username]
-    user = User.where(username: username).first
-    
-    if user 
-      objectDefName = params[:name]
-      
-      # Grab the ObjectDef from the body!
-      # puts "DATA!!!"
-      # puts params[:data]
-      objectDef = params[:data]
+    user = User.where(:api_key => params[:api_key]).first
 
-      user.create_object_definition(objectDefName, objectDef)
-      
+    if user
+      # Grab the ObjectDef name and data from the params.
+      objectDefName = params[:name]
+      objectDefData = params[:data]
+
+      user.create_object_definition(objectDefName, objectDefData)
+
       # Create ObjectDef route
-      
+      # ...
+
       render :json => { 'status' => 'success' }, :callback => params[:callback]
     else
       render :json => { 'status' => 'success' }, :callback => params[:callback]
