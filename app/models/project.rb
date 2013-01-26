@@ -22,7 +22,7 @@ class Project
                                 :user => user)
       return project
     end
-  end 
+  end
 
   #-----------------------------------------------------------------------------
   # Instance methods
@@ -36,8 +36,8 @@ class Project
   # TBD
   def create_instance_document(objectDefName, instanceData)
     objectDef = ObjectDef.where(name: objectDefName).first
-    return Instance.generate(objectDef, 
-                             instanceData, 
+    return Instance.generate(objectDef,
+                             instanceData,
                              self)
   end
 
@@ -50,15 +50,15 @@ class Project
   # TBD
   def self.destroy_by_name
     nil
-  end 
+  end
 
   # TBD
   def self.get_by_name
     nil
-  end 
+  end
 
   # TBD
   def self.get_all_endpoints
     nil
-  end 
+  end
 end
