@@ -5,14 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :production, :staging do
-  gem "pg"
-end
-
-group :development, :test do
-  gem "sqlite3"
-end
-
+gem 'mongoid'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,14 +25,15 @@ group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
+  gem 'mongoid-rspec'
   gem 'rb-fsevent', '~> 0.9.1'
+  gem 'rb-inotify', '~> 0.8.8'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
 
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
-
-gem 'mongoid'
 
 gem 'moped'
 
