@@ -27,7 +27,7 @@ group :test do
   gem "guard-rspec"
   gem 'mongoid-rspec'
   gem 'rb-fsevent', '~> 0.9.1'
-  gem 'rb-inotify', '~> 0.8.8'
+  gem 'ruby_gntp'
   gem 'database_cleaner'
 end
 
