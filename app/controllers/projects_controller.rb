@@ -4,16 +4,18 @@ class ProjectsController < ApplicationController
     apiKey = params[:api_key]
     projectName = params[:name]
 
+    # Get the user and handle an invalid api key.
     user = User.where(api_key: apiKey).first
-
-    if user
-      project = user.create_project(projectName)
-
-      render :json => { 'id' => project.id,
-                        'status' => 'success' }, :callback => params[:callback]
-    else
-      render :json => { 'status' => 'fail' }, :callback => params[:callback]
+    if not user
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_API_KEY }, :callback => params[:callback]
     end
+
+    # Create a new user project.
+    project = user.create_project(projectName)
+
+    return render :json => { 'id' => project.id,
+                             'status' => 'success' }, :callback => params[:callback]
 
   end
 
