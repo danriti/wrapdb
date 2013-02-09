@@ -32,7 +32,7 @@ class ObjectDefsController < ApplicationController
 
     objectDefs = ObjectDef.where(user: user)
 
-    # Check if the user has any projects.
+    # Check if the user has any object definitions.
     if objectDefs.any?
       return render :json => { 'objects' => objectDefs,
                                'status' => 'success' }, :callback => params[:callback]
