@@ -28,6 +28,37 @@ class EndpointsController < ApplicationController
                              'status' => 'success' }, :callback => params[:callback]
   end
 
+  # /:projectId/endpoints/get
+  def get
+    apiKey = params[:api_key]
+    projectId = params[:projectId]
+
+    # Get that user and handle not existant user.
+    user = User.where(api_key: apiKey).first
+    if not user
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_API_KEY }, :callback => params[:callback]
+    end
+
+    # Grab that project and handle not existant project.
+    project = Project.where(id: projectId).first
+    if not project
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_PROJECT_ID }, :callback => params[:callback]
+    end
+
+    endpoints = project.get_all_endpoints
+
+    # Check if the user project has any endpoints.
+    if endpoints.any?
+      return render :json => { 'endpoints' => endpoints,
+                               'status' => 'success' }, :callback => params[:callback]
+    else
+      return render :json => { 'status' => 'fail',
+                               'error' => NO_PROJECT_ENDPOINTS }, :callback => params[:callback]
+    end
+  end
+
   # /endpoints/render
   def get_adapter
     nil
