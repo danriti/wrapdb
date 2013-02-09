@@ -1,8 +1,9 @@
 class ObjectDefsController < ApplicationController
+  # /objects/create
   def create
     apiKey = params[:api_key]
 
-    user = User.where(api_key: params[:api_key]).first
+    user = User.where(api_key: apiKey).first
     if not user
       return render :json => { 'status' => 'fail',
                                'error' => INVALID_API_KEY }, :callback => params[:callback]
