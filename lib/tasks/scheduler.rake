@@ -253,10 +253,10 @@ task :mongo_test => :environment do
                 "selectionName" => "bathroomSelect"
             }                              
         ]
-  e = p.create_endpoint("Bathroom List", e1)
+  e = p.create_endpoint("bathroom-list", e1)
   
   # Test the endpoint!
-  puts e.name == "Bathroom List"
+  puts e.name == "bathroom-list"
   puts e.type == "endpoint"
 
   # Render the endpoint!
