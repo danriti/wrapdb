@@ -61,4 +61,9 @@ class Project
   def get_all_endpoints
     return Endpoint.where(project: self)
   end
+
+  # TBD
+  def get_endpoint_by_name(name)
+    return Endpoint.where(project: self, name: name).first
+  end
 end
