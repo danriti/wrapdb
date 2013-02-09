@@ -19,13 +19,6 @@ EasyApi::Application.routes.draw do
   match 'users/create', to: 'users#create'
   match 'users/get', to: 'users#get'
 
-  match 'endpoints/get', to: 'endpoints#get_endpoints'
-  match 'endpoints/render', to: 'endpoints#get_render'
-  match 'endpoints/adapter', to: 'endpoints#get_adapter'
-
-  match 'endpoints/instance/create', to: 'endpoints#create_instance'
-  match 'endpoints/instance/get', to: 'endpoints#create_get'
-
   match 'test/body', to: 'endpoints#test_body'
   match 'test', to: 'endpoints#test'
 
