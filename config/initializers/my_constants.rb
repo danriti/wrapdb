@@ -12,3 +12,4 @@ ENDPOINT_PATH = USER_PATH + ".endpoints"
 # Response Strings
 INVALID_API_KEY = "Invalid api key."
 INVALID_PROJECT_ID = "Invalid project id."
+NO_USER_PROJECTS = "User does not have any projects."

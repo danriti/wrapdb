@@ -3,6 +3,7 @@ EasyApi::Application.routes.draw do
 
   # Current routes.
   match 'projects/create', to: 'projects#create'
+  match 'projects/get', to: 'projects#get'
 
   match 'objects/create', to: 'object_defs#create'
 
@@ -13,8 +14,6 @@ EasyApi::Application.routes.draw do
 
   match 'users/create', to: 'users#create'
   match 'users/get', to: 'users#get'
-
-  match 'projects/get', to: 'projects#get'
 
   match 'endpoints/create', to: 'endpoints#create'
   match 'endpoints/get', to: 'endpoints#get_endpoints'
