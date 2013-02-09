@@ -6,6 +6,7 @@ EasyApi::Application.routes.draw do
   match 'projects/get', to: 'projects#get'
 
   match 'objects/create', to: 'object_defs#create'
+  match 'objects/get', to: 'object_defs#get'
 
   match ':projectId/:objectDefName/insert', to: 'instances#insert'
 
