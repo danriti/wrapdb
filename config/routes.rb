@@ -10,13 +10,14 @@ EasyApi::Application.routes.draw do
 
   match ':projectId/:objectDefName/insert', to: 'instances#insert'
 
+  match ':projectId/endpoints/create', to: 'endpoints#create'
+
   # Old routes.
   root to: 'projects#index'
 
   match 'users/create', to: 'users#create'
   match 'users/get', to: 'users#get'
 
-  match 'endpoints/create', to: 'endpoints#create'
   match 'endpoints/get', to: 'endpoints#get_endpoints'
   match 'endpoints/render', to: 'endpoints#get_render'
   match 'endpoints/adapter', to: 'endpoints#get_adapter'
