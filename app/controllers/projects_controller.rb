@@ -21,15 +21,24 @@ class ProjectsController < ApplicationController
 
   # /projects/get
   def get
-    project = Project.where(:id => params[:id]).first
+    apiKey = params[:api_key]
 
-    if project != nil
-      render :json => { 'project' => project,
-                        'endpoints' => project.endpoints,
-                        'status' => 'success' },
-             :callback => params[:callback]
+    # Get the user and handle an invalid api key.
+    user = User.where(api_key: apiKey).first
+    if not user
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_API_KEY }, :callback => params[:callback]
+    end
+
+    projects = Project.where(user: user)
+
+    # Check if the user has any projects.
+    if projects.any?
+      return render :json => { 'projects' => projects,
+                               'status' => 'success' }, :callback => params[:callback]
     else
-      render :json => { 'status' => 'fail' }, :callback => params[:callback]
+      return render :json => { 'status' => 'fail',
+                               'error' => NO_USER_PROJECTS }, :callback => params[:callback]
     end
   end
 
