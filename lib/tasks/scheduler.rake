@@ -105,6 +105,165 @@ task :test_data => :environment do
 
 end
 
+task :create_admin_user, [:username, :email] => [:environment] do |t, args|
+  u = User.create!(:username => args[:username],
+                   :email => args[:email])
+end
+
+task :destroy_environment => :environment do
+  User.destroy_all
+  ObjectDef.destroy_all
+  Instance.destroy_all
+  Project.destroy_all
+  Endpoint.destroy_all
+
+  Rake::Task['create_admin_user'].execute({:username => 'admin',
+                                           :email => 'admin@example.com'})
+
+end
+
+task :mongo_test => :environment do 
+
+  User.destroy_all
+  ObjectDef.destroy_all
+  Instance.destroy_all
+  Project.destroy_all
+  Endpoint.destroy_all
+
+  # Create an admin user!
+  Rake::Task['create_admin_user'].execute({:username => 'admin',
+                                           :email => 'dmriti@gmail.com'})
+
+  # Fetch the user and test it!
+  u = User.first
+  puts u.username == "admin"
+  puts u.email == "dmriti@gmail.com"
+  puts u.api_key == "123Key"
+
+  # Create a project.
+  p = u.projects.first
+  puts p.name == "My Project"
+
+  # Create a business object document.
+  b = [{"name" => "name", "type" => "string"}, 
+       {"name" => "address", "type" => "string"}]                                           
+  u.create_object_definition("business", b)
+
+  id = ObjectDef.find_by(name: "business").id
+
+  # Create a restroom object document.
+  r = [{"name" => "name", "type" => "string"}, 
+       {"name" => "location", "type" => "string"}, 
+       {"name" => "business", "type" => "objectRef", "objectId" => id}]
+  rDef = u.create_object_definition("restroom", r)
+
+  # Create a cat object document.
+  b = [{"name" => "name", "type" => "string"}, 
+       {"name" => "breed", "type" => "string"}]                                           
+  u.create_object_definition("cat", b)
+
+  # Example instance data!
+  #   {
+  #    "type" => "instance",
+  #    "user" => "deepak"
+  #    "object" => "business",
+  #    "value" => {"name" => "McDonalds",
+  #                "address" => "123 Happy Meal St"}
+  #   }
+
+  # Create first business instance.
+  b1 = {"name" => "McDonalds", 
+        "address" => "123 Happy Meal St"}
+  p.create_instance_document("business", b1)
+
+  # Create second business instance.
+  b1 = {"name" => "CVS", "address" => "123 Pharmacy St"}
+  p.create_instance_document("business", b1)
+
+  # Create third business instance.
+  b1 = {"name" => "Pizza Joint", "address" => "123 Pepperoni St"}
+  p.create_instance_document("business", b1)
+
+  # Find the business you want to use!
+  mcdonalds = p.get_instances_by_object_name("business")[0]
+  cvs = p.get_instances_by_object_name("business")[1]
+
+  # Create a restroom instance and reference a business! DUN DUN DUN!
+  ri = {"name" => "McDonalds Bathroom",
+        "location" => "2nd Floor",
+        "business" => mcdonalds["id"]}
+  p.create_instance_document("restroom", ri)
+
+  # Create a restroom instance and reference a business! DUN DUN DUN!
+  ri2 = {"name" => "CVS Bathroom",
+         "location" => "1st Floor",
+         "business" => cvs["id"]}
+  p.create_instance_document("restroom", ri2)
+
+  # Grab all instances of the restroom.
+  instanceArray = p.get_instances_by_object_name("restroom")
+
+  # Get the instance object.
+  instance = Instance.find_by(id: instanceArray[0]["id"])
+
+  # Print JSON with a reference to console!
+  puts instance.render
+
+  # Test that business does NOT get destroyed because it contains instances.
+  puts u.destroy_object_definition("business") == false
+
+  # Test that cats does NOT get destroyed because it does not exist.
+  puts u.destroy_object_definition("cats") == false
+
+  # Test that cat DOES get destroyed because it contains no instances.
+  puts u.destroy_object_definition("cat") == true
+
+  # Example Endpoint JSON
+  #
+  #   {
+  #       "type": "endpoint",
+  #       "data": [
+  #           {
+  #               "name": "title",
+  #               "type": "string",
+  #               "value": "MyBathrooms"
+  #           },
+  #           {
+  #               "name": "bathrooms",
+  #               "type": "objectRef",
+  #               "objectId": "123ObjectId",
+  #               "selectionName": "bathroomSelect"
+  #           }
+  #       ],
+  #       "name": "BathroomTest",
+  #       "projectID": "1"
+  #   }
+
+  # Create an endpoint for displaying Bathrooms!
+  e1 = [                          
+            {                              
+                "name" => "title",           
+                "type" => "string",          
+                "value" => "MyBathrooms"     
+            },                             
+            {                              
+                "name" => "bathrooms",       
+                "type" => "objectRef",       
+                "objectId" => rDef.id,
+                "selectionName" => "bathroomSelect"
+            }                              
+        ]
+  e = p.create_endpoint("bathroom-list", e1)
+  
+  # Test the endpoint!
+  puts e.name == "bathroom-list"
+  puts e.type == "endpoint"
+
+  # Render the endpoint!
+  puts e.render(0, {})
+
+end
+
 desc "TBD"
 task :update_matches => :environment do
   puts "Update Matches!"

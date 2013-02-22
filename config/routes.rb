@@ -1,23 +1,27 @@
 EasyApi::Application.routes.draw do
   #resources :projects
 
+  # Current routes.
+  match 'projects/create', to: 'projects#create'
+  match 'projects/get', to: 'projects#get'
+
+  match 'objects/create', to: 'object_defs#create'
+  match 'objects/get', to: 'object_defs#get'
+
+  match ':projectId/:objectDefName/insert', to: 'instances#insert'
+
+  match ':projectId/endpoints/create', to: 'endpoints#create'
+  match ':projectId/endpoints/get', to: 'endpoints#get'
+  match ':projectId/:endpointName', to: 'endpoints#render_endpoint'
+
+  # Old routes.
   root to: 'projects#index'
 
   match 'users/create', to: 'users#create'
   match 'users/get', to: 'users#get'
 
-  match 'projects/create', to: 'projects#create'
-  match 'projects/get', to: 'projects#get'
-
-  match 'endpoints/create', to: 'endpoints#create'
-  match 'endpoints/get', to: 'endpoints#get_endpoints'
-  match 'endpoints/render', to: 'endpoints#get_render'
-  match 'endpoints/adapter', to: 'endpoints#get_adapter'
-
-  match 'endpoints/instance/create', to: 'endpoints#create_instance'
-  match 'endpoints/instance/get', to: 'endpoints#create_get'
-
-  match 'test/body', to: 'endpoints#test'
+  match 'test/body', to: 'endpoints#test_body'
+  match 'test', to: 'endpoints#test'
 
   # omniauth-github related routes.
   #match 'auth/:provider/callback', to: 'sessions#create'
