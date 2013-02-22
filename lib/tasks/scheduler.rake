@@ -122,7 +122,7 @@ task :destroy_environment => :environment do
 
 end
 
-task :mongo_test => :environment do
+task :mongo_test => :environment do 
 
   User.destroy_all
   ObjectDef.destroy_all
