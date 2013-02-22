@@ -1,26 +1,93 @@
 class EndpointsController < ApplicationController
-  # /endpoints/create
+  # /:projectId/endpoints/create
   def create
-    project = Project.where(:id => params[:projectid]).first
-    
-    if project != nil
-      blob = JSON.parse(params[:blob])
+    apiKey = params[:api_key]
+    projectId = params[:projectId]
+    endpointName = params[:name]
+    endpointData = params[:data]
 
-      item = Item.new(:name => blob['key'],
-                      :keytype => blob['type'].downcase)
-      item.save
-
-      endpoint = Endpoint.new(:name => params[:name])
-      endpoint.project = project
-      endpoint.item = item
-      endpoint.save
-
-      create_dictionary(item, blob)
-
-      render :json => { 'id' => endpoint.id, 'status' => 'success' }, :callback => params[:callback]
-    else
-      render :json => { 'status' => 'fail' }, :callback => params[:callback]
+    # Get that user and handle not existant user.
+    user = User.where(api_key: apiKey).first
+    if not user
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_API_KEY }, :callback => params[:callback]
     end
+
+    # Grab that project and handle not existant project.
+    project = Project.where(id: projectId).first
+    if not project
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_PROJECT_ID }, :callback => params[:callback]
+    end
+
+    # Create the project endpoint!
+    endpoint = project.create_endpoint(endpointName, endpointData)
+    
+    return render :json => { 'id' => endpoint.id,
+                             'url' => 'TBD',
+                             'status' => 'success' }, :callback => params[:callback]
+  end
+
+  # /:projectId/endpoints/get
+  def get
+    apiKey = params[:api_key]
+    projectId = params[:projectId]
+
+    # Get that user and handle not existant user.
+    user = User.where(api_key: apiKey).first
+    if not user
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_API_KEY }, :callback => params[:callback]
+    end
+
+    # Grab that project and handle not existant project.
+    project = Project.where(id: projectId).first
+    if not project
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_PROJECT_ID }, :callback => params[:callback]
+    end
+
+    endpoints = project.get_all_endpoints
+
+    # Check if the user project has any endpoints.
+    if endpoints.any?
+      return render :json => { 'endpoints' => endpoints,
+                               'status' => 'success' }, :callback => params[:callback]
+    else
+      return render :json => { 'status' => 'fail',
+                               'error' => NO_PROJECT_ENDPOINTS }, :callback => params[:callback]
+    end
+  end
+
+  # /:projectID/:endpointName
+  def render_endpoint
+    apiKey = params[:api_key]
+    projectId = params[:projectId]
+    endpointName = params[:endpointName]
+
+    # Get that user and handle not existant user.
+    user = User.where(api_key: apiKey).first
+    if not user
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_API_KEY }, :callback => params[:callback]
+    end
+
+    # Grab that project and handle not existant project.
+    project = Project.where(id: projectId).first
+    if not project
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_PROJECT_ID }, :callback => params[:callback]
+    end
+
+    # Get the endpoint and handle any failures.
+    endpoint = project.get_endpoint_by_name(endpointName)
+    if not endpoint
+      return render :json => { 'status' => 'fail',
+                               'error' => INVALID_ENDPOINT_NAME }, :callback => params[:callback]
+    end
+    
+    # Render that endpoint!
+    return render :json => endpoint.render(0, {})
   end
 
   # /endpoints/render
@@ -130,10 +197,14 @@ class EndpointsController < ApplicationController
     end
   end
 
+  # /test
+  def test
+    render :json => {"status" => "success"}
+  end
 
   # /test/body
   # This tests the fetching of POST request parameters.
-  def test
+  def test_body
     blob = JSON.parse(params[:blob])
 
     d = Dictionary.create!
