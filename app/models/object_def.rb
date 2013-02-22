@@ -16,7 +16,7 @@ class ObjectDef
 
   # Generate a new object definition.
   def self.generate(objectDefName, objectDefData, user)
-    obj = ObjectDef.create!(:name => objectDefName,
+    obj = ObjectDef.create!(:name => objectDefName.downcase,
                             :type => "object",
                             :user => user,
                             :data => objectDefData)
@@ -29,7 +29,7 @@ class ObjectDef
 
     # If the object definition exists and there are no instances associated with
     # the object definition, destroy the object destory.
-    if objectDef != nil and 
+    if objectDef != nil and
        not Instance.where(object_def: objectDef).exists?
       objectDef.destroy
       return true
